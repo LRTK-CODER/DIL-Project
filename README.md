@@ -10,10 +10,11 @@
 #### 🧲 Pull Request & Commit Message 규칙
 Pull Request 전, 자신이 fork한 저장소의 커밋 내역을 원격 저장소의 최신 커밋으로 fetch & merge 한 이후에 진행
 
-- 최신 커밋으로 fetch & merge 하는 방법
-    [ChanBLOG - Git fetch : fork한 저장소를 원래 저장소의 최신 커밋 내역으로 바꾸기](https://chanhuiseok.github.io/posts/git-2/) 참고
-- Pull Request(PR)를 하는 방법
-    [ChanBLOG - Pull Request(PR) 보내는 방법 : Contribution 하기](https://chanhuiseok.github.io/posts/git-3/) 참고
+- 최신 커밋으로 fetch & merge 하는 방법<br>
+  [ChanBLOG - Git fetch : fork한 저장소를 원래 저장소의 최신 커밋 내역으로 바꾸기](https://chanhuiseok.github.io/posts/git-2/) 참고
+
+- Pull Request(PR)를 하는 방법<br>
+  [ChanBLOG - Pull Request(PR) 보내는 방법 : Contribution 하기](https://chanhuiseok.github.io/posts/git-3/) 참고
 
 ## 📗 스터디 자료
 - [개인정보 비식별 조치 가이드라인](https://www.kisa.or.kr/public/laws/laws2_View.jsp?cPage=1&mode=view&p_No=282&b_No=282&d_No=3&ST=T&SV=)
