@@ -5,7 +5,7 @@
 - Root Readme의 내용은 자료 정리를 위해 사용
 
 ### ✏️ 스터디 기여 방법
-[Git - GitHub 프로젝트에 기여하기](https://git-scm.com/book/ko/v2/GitHub-GitHub-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EC%97%90-%EA%B8%B0%EC%97%AC%ED%95%98%EA%B8%B0)의 내용대로 기여
+[Git - GitHub 프로젝트에 기여하기](https://git-scm.com/book/ko/v2/GitHub-GitHub-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EC%97%90-%EA%B8%B0%EC%97%AC%ED%95%98%EA%B8%B0)의 내용 참고
 
 #### 🧲 Pull Request & Commit Message 규칙
 Pull Request 전, 자신이 fork한 저장소의 커밋 내역을 원격 저장소의 최신 커밋으로 fetch & merge 한 이후에 진행
