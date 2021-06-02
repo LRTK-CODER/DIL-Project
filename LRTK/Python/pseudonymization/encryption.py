@@ -1,10 +1,9 @@
 import hashlib, random, string
 
 class Hashing:
-    def __init__(self, plainList, salt=None):
+    def __init__(self, plainList):
         self.plainList = plainList
-        self.salt = salt
-
+        
     def saltCreate(self):
         salt = ''
         for i in range(50):
@@ -13,13 +12,28 @@ class Hashing:
         return salt
 
     def sha256(self, randomSalt=False):
-        if not(self.salt):
-            self.salt = saltCreate()
-
-        result = []
+        result, saltList = [], []
         for plain in self.plainList:
-            m = hashlib.sha256()
-            m.update(self.salt + plain)
+            if randomSalt:
+                while True:
+                    salt = self.saltCreate()
+
+                    m = hashlib.sha256()
+                    m.update((salt + plain).encode())
+
+                    if m.hexdigest() not in result:
+                        saltList.append(salt)
+                        break
+            
+            else:
+                m = hashlib.sha256()
+                m.update(plain.encode())
+
+                if m.hexdigest() in result:
+                    print('hash 충돌 >>>', plain)
+
             result.append(m.hexdigest())
+            
+
         
-        return result
+        return result, saltList

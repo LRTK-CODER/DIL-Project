@@ -1,4 +1,4 @@
-import pandas, time
+import pandas, time, pprint
 import privacy
 from pseudonymization import Heuristic, Hashing
 
@@ -35,6 +35,9 @@ if __name__ == '__main__':
     print()
     
     # 암호화
-    
+    print('원본 데이터 5개만 출력 >>>', names[:5])
+
+    hashResult, saltList = Hashing(names).sha256(randomSalt=True)
+    pprint.pprint(hashResult[:5])
 
     print(f'\n실행 시간 : {int(time.time() - start)}s')
