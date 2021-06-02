@@ -1,0 +1,5 @@
+# LRTK ignore
+/LRTK/Python/config/
+/LRTK/Python/__pycache__/
+/LRTK/Python/pseudonymization/__pycache__/
+# end
