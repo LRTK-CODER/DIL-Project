@@ -2,6 +2,7 @@ from cryptography.fernet import Fernet
 import pandas as pd, random
 import numpy as np
 
+# 암호화
 class SimpleEnDecrypt:
     def __init__(self, key=None):
         if key is None: # 키가 없다면
@@ -42,4 +43,4 @@ for i in range(len(df['이름'])):
 
 print(df['이름'])
 
-# 암호화 코드 출처 : https://blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=wideeyed&logNo=221666489901
+# 암호화 코드 출처 : https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=wideeyed&logNo=221666489901
