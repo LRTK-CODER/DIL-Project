@@ -1,4 +1,5 @@
 import cryption
+
 in_str = input("암호화 할 값을 입력하세요\n")
 
 if in_str != None:
