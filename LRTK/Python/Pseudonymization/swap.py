@@ -9,5 +9,3 @@ class Swapping:
             current[i[0]], current[i[1]] = current[i[1]], current[i[0]]
         
         return current
-            
-        
