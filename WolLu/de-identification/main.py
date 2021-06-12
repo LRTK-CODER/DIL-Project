@@ -14,10 +14,13 @@ def PrintDidaAlgorithm():
     print(' 13. 교환 방법')
     print()
     print('# 총계처리 #')
-    print(' 21. 총계처리')
-    print(' 22. 부분총계')
-    print(' 23. 라운딩')
-    print(' 24. 재배열')
+    print(' 21. 총계처리, 부분총계')
+    print('  0. 실수')
+    print('  1. 정수')
+    print(' 22. 라운딩')
+    print('  0. 나이')
+    print('  1. 그 외')
+    print(' 23. 재배열')
     print()
     print('# 데이터 삭제 #')
     print(' 31. 식별자 삭제')
@@ -46,24 +49,18 @@ def SelectAlgorithm(column: str, sel: int):
     if(sel == 0):
         return True
     elif(sel == 11):
-        return dida.HeuristicAlgorithm(column, rowsCount, int(input("모드 선택 : ")))
+        return dida.Heuristic(column, rowsCount, int(input("모드 선택 : ")))
     elif(sel == 12):
-        return dida.EncryptionAlgorithm(column, rowsCount, int(input("모드 선택 : ")))
+        return dida.Encryption(column, rowsCount, int(input("모드 선택 : ")))
     elif(sel == 13):
         print(noneMsg)
         return False
     elif(sel == 21):
-        print(noneMsg)
-        return False
+        return dida.Aggregation(column, rowsCount, float(input("시작값 범위 : ")), float(input("종료값 범위 : ")), int(input("정수출력 : ")))
     elif(sel == 22):
-        print(noneMsg)
-        return False
+        return dida.Rounding(column, rowsCount, int(input("모드 선택 : ")), input("단위 : "), int(input("단위길이 : ")))
     elif(sel == 23):
-        print(noneMsg)
-        return False
-    elif(sel == 24):
-        print(noneMsg)
-        return False
+        return dida.Rearrangement(column, rowsCount)
     elif(sel == 31):
         print(noneMsg)
         return False
@@ -100,7 +97,8 @@ def SelectAlgorithm(column: str, sel: int):
 
 # Entry Point
 if __name__ == '__main__':
-    dida = DIDA('./test.xlsx')
+    dida = DIDA('./TestExcelFiles/test.xlsx')                      # 일반 test엑셀 가져오기
+    #dida = DIDA('./TestExcelFiles/500000_test.xlsx')               # 50만 엑셀 가져오기
     columns = dida.ReadColumnsToString()                           # 퀄럼 문자열(list)로 가져오기
     rowsCount = dida.GetDataFrameRowCount()                        # 행 개수 가져오기
     print('총 ', len(columns), '개의 퀄럼을 찾았습니다!', sep='')      # 행 개수 출력
@@ -116,4 +114,4 @@ if __name__ == '__main__':
         i += 1
 
     dida.print()                                                    # 최종 결과물을 콘솔에 출력
-    dida.ExportExcelFile("result.xlsx")                             # 최종 결과물을 엑셀파일로 출력
+    dida.ExportExcelFile("./TestExcelFiles/result.xlsx")                             # 최종 결과물을 엑셀파일로 출력
