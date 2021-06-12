@@ -56,6 +56,4 @@ if __name__ == '__main__':
     print()
     print(rearrange.run([(0, 2), (5, 7)])[:10])
 
-
-
     print(f'\n실행 시간 : {int(time.time() - start)}s')
