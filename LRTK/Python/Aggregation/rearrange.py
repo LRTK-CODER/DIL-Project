@@ -1,9 +1,17 @@
+import copy
+
 class Rearrange:
     def __init__(self, datas):
         self.datas = datas
 
     def run(self, changeList:list):
-        for i in changeList:
-            self.datas[i[0]], self.datas[i[1]] = self.datas[i[1]], self.datas[i[0]]
-            
+        current = copy.deepcopy(self.datas)
+        for i, j in changeList:
+            temp = current[i]
+            self.datas[i] = self.datas[j]
+            self.datas[j] = temp
+
+        # for i, j in changeList:
+        #     self.datas[i], self.datas[j] = self.datas[j], self.datas[i]
+        
         return self.datas
