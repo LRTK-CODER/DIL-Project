@@ -1,6 +1,6 @@
 import pandas, time, pprint
 import privacy
-from pseudonymization import Heuristic, Hashing, Swapping
+from Pseudonymization import Heuristic, Hashing, Swapping
 
 def toList(np):
     return [i[0] for i in np]
@@ -25,11 +25,11 @@ if __name__ == '__main__':
     print("개인정보 식별자 >>> ", ', '.join(privacyIdentifier))
     print()
 
-    # names = toList(dataDivision(['이름']))
+    names = toList(dataDivision(['이름']))
     # 휴리스틱 가명화
     # print('원본 데이터 5개만 출력 >>>', names[:5])
     
-    # heuristicChangeList = [('고경화', '홍길동'), ('김성하', '임꺽정')]
+    # heuristicChangeList = [('서유성', '홍길동'), ('김성하', '임꺽정')]
     # heuristicList, heuristicFailList = Heuristic(names).change(heuristicChangeList)
     # print('휴리스틱 가명화 5개만 출력 >>> ', heuristicList[:5])
     # print('휴리스틱 가명화 실패한 대상 >>>', heuristicFailList)
