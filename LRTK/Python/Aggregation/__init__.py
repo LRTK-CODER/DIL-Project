@@ -1,6 +1,7 @@
 from .rounding import Rounding
+from .rearrange import Rearrange
 
-__all__ = ['Rounding']
+__all__ = ['Rounding', 'Rearrange']
 
 class Aggregation:
     def __init__(self, datas:list):

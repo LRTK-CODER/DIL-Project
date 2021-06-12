@@ -1,6 +1,6 @@
 import pandas, time, pprint
 import privacy
-from Aggregation import Aggregation, Rounding
+from Aggregation import Aggregation, Rounding, Rearrange
 
 def toList(np):
     return [i[0] for i in np]
@@ -46,6 +46,16 @@ if __name__ == '__main__':
     standard = [i*10 for i in range(1, 9)]
     rounding = Rounding(ages)
     ages = rounding.run(standard)
-    print(ages[:5])
+    print('라운딩 결과 >>>', ages[:5])
+
+    # 재배열
+    print()
+    datas = pandas.DataFrame.to_numpy(excel.loc[:, columnList])
+    rearrange = Rearrange(datas)
+    print(datas[:10])
+    print()
+    print(rearrange.run([(0, 2), (5, 7)])[:10])
+
+
 
     print(f'\n실행 시간 : {int(time.time() - start)}s')
