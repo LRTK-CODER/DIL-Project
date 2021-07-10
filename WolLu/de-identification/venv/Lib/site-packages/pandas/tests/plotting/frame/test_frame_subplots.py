@@ -9,7 +9,11 @@ import pytest
 import pandas.util._test_decorators as td
 
 import pandas as pd
-from pandas import DataFrame, Series, date_range
+from pandas import (
+    DataFrame,
+    Series,
+    date_range,
+)
 import pandas._testing as tm
 from pandas.tests.plotting.common import TestPlotBase
 
@@ -218,9 +222,13 @@ class TestDataFramePlotsSubplots(TestPlotBase):
         self._check_axes_shape(axes, axes_num=3, layout=(4, 1))
         assert axes.shape == (4, 1)
 
-        with pytest.raises(ValueError):
+        msg = "Layout of 1x1 must be larger than required size 3"
+
+        with pytest.raises(ValueError, match=msg):
             df.plot(subplots=True, layout=(1, 1))
-        with pytest.raises(ValueError):
+
+        msg = "At least one dimension of layout must be positive"
+        with pytest.raises(ValueError, match=msg):
             df.plot(subplots=True, layout=(-1, -1))
 
     @pytest.mark.parametrize(
@@ -272,7 +280,9 @@ class TestDataFramePlotsSubplots(TestPlotBase):
         self._check_axes_shape(axes, axes_num=6, layout=(2, 3))
         tm.close()
 
-        with pytest.raises(ValueError):
+        msg = "The number of passed axes must be 3, the same as the output plot"
+
+        with pytest.raises(ValueError, match=msg):
             fig, axes = self.plt.subplots(2, 3)
             # pass different number of axes from required
             df.plot(subplots=True, ax=axes)
@@ -476,6 +486,19 @@ class TestDataFramePlotsSubplots(TestPlotBase):
         tm.assert_numpy_array_equal(axs[0].get_xticks(), expected_ax1)
         tm.assert_numpy_array_equal(axs[1].get_xticks(), expected_ax2)
 
+    def test_subplots_constrained_layout(self):
+        # GH 25261
+        idx = date_range(start="now", periods=10)
+        df = DataFrame(np.random.rand(10, 3), index=idx)
+        kwargs = {}
+        if hasattr(self.plt.Figure, "get_constrained_layout"):
+            kwargs["constrained_layout"] = True
+        fig, axes = self.plt.subplots(2, **kwargs)
+        with tm.assert_produces_warning(None):
+            df.plot(ax=axes[0])
+            with tm.ensure_clean(return_filelike=True) as path:
+                self.plt.savefig(path)
+
     @pytest.mark.parametrize(
         "index_name, old_label, new_label",
         [
@@ -499,7 +522,7 @@ class TestDataFramePlotsSubplots(TestPlotBase):
         assert all(ax.get_ylabel() == "" for ax in axes)
         assert all(ax.get_xlabel() == old_label for ax in axes)
 
-        # old xlabel will be overriden and assigned ylabel will be used as ylabel
+        # old xlabel will be overridden and assigned ylabel will be used as ylabel
         axes = df.plot(kind=kind, ylabel=new_label, xlabel=new_label, subplots=True)
         assert all(ax.get_ylabel() == str(new_label) for ax in axes)
         assert all(ax.get_xlabel() == str(new_label) for ax in axes)

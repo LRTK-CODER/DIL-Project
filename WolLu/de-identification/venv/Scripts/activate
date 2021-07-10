@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Project\개인정보 비식별 기술 스터디\de-identification-study\WolLu\de-identification\venv"
+VIRTUAL_ENV="C:\Project\de-identification-study\WolLu\de-identification\venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

@@ -17,7 +17,11 @@ from pandas import (
 )
 import pandas._testing as tm
 
-from pandas.tseries.offsets import BMonthEnd, Minute, MonthEnd
+from pandas.tseries.offsets import (
+    BMonthEnd,
+    Minute,
+    MonthEnd,
+)
 
 START, END = datetime(2009, 1, 1), datetime(2010, 1, 1)
 
@@ -326,7 +330,8 @@ class TestDatetimeIndexSetOps:
             (rng3, other3, expected3),
         ]:
             result_diff = rng.difference(other, sort)
-            if sort is None:
+            if sort is None and len(other):
+                # We dont sort (yet?) when empty GH#24959
                 expected = expected.sort_values()
             tm.assert_index_equal(result_diff, expected)
 
@@ -385,6 +390,23 @@ class TestDatetimeIndexSetOps:
         assert result.name is None
         assert result.freq == rng.freq
         assert result.tz == rng.tz
+
+    def test_intersection_non_tick_no_fastpath(self):
+        # GH#42104
+        dti = DatetimeIndex(
+            [
+                "2018-12-31",
+                "2019-03-31",
+                "2019-06-30",
+                "2019-09-30",
+                "2019-12-31",
+                "2020-03-31",
+            ],
+            freq="Q-DEC",
+        )
+        result = dti[::2].intersection(dti[1::2])
+        expected = dti[:0]
+        tm.assert_index_equal(result, expected)
 
 
 class TestBusinessDatetimeIndex:
