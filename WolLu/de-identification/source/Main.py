@@ -1,5 +1,6 @@
 import pandas
 import Aggregation
+import Randomization
 
 # 알고리즘 목록 출력 함수
 def PrintDidaAlgorithm():
@@ -12,6 +13,10 @@ def PrintDidaAlgorithm():
     print(' 4. 총계처리 - 중앙값')
     print(' 5. 총계처리 - 최빈값')
     print()
+    print('# 무작위화 #')
+    print(' 6. 잡음추가 - 숫자형')
+    print(' 7. 잡음추가 - 날짜형')
+    print()
     print(' 0. 적용안함')
     print('======================')
     print()
@@ -23,22 +28,43 @@ def SelectAlgorithm(column: str, sel: int):
     if(sel == 0):
         return True
     elif(sel == 1):
-        Aggregation.meanAggregation(dataFrame, indexSize, column, bool(input("반올림 : ")))
+        Aggregation.meanAggregation(dataFrame, indexSize, column, int(input("시작 인덱스 : ")), int(input("종료 인덱스 : ")), bool(input("반올림 : ")))
         return True
     elif (sel == 2):
-        Aggregation.maxAggregation(dataFrame, indexSize, column)
+        Aggregation.maxAggregation(dataFrame, indexSize, column, int(input("시작 인덱스 : ")), int(input("종료 인덱스 : ")))
         return True
     elif (sel == 3):
-        Aggregation.minAggregation(dataFrame, indexSize, column)
+        Aggregation.minAggregation(dataFrame, indexSize, column, int(input("시작 인덱스 : ")), int(input("종료 인덱스 : ")))
         return True
     elif (sel == 4):
-        Aggregation.midAggregation(dataFrame, indexSize, column)
+        Aggregation.midAggregation(dataFrame, indexSize, column, int(input("시작 인덱스 : ")), int(input("종료 인덱스 : ")))
         return True
     elif (sel == 5):
-        Aggregation.modeAggregation(dataFrame, indexSize, column)
+        Aggregation.modeAggregation(dataFrame, indexSize, column, int(input("시작 인덱스 : ")), int(input("종료 인덱스 : ")))
         return True
-    elif (sel == 10):
-        Aggregation.microAggregation(dataFrame, indexSize, column)
+    elif (sel == 6):
+        relatedColumns = []
+
+        while(True):
+            inputValue = input("연관된 퀄럼을 입력하세요(종료 : 0) : ")
+            if inputValue == '0':
+                break
+
+            relatedColumns.append(inputValue)
+
+        Randomization.noiseAdditionOfInt(dataFrame, indexSize, column, int(input("랜덤 최소값 : ")), int(input("랜덤 최대값 : ")), relatedColumns)
+        return True
+    elif (sel == 7):
+        relatedColumns = []
+
+        while (True):
+            inputValue = input("연관된 퀄럼을 입력하세요(종료 : 0) : ")
+            if inputValue == '0':
+                break
+
+            relatedColumns.append(inputValue)
+
+        Randomization.noiseAdditionOfDate(dataFrame, indexSize, column, int(input("랜덤 최소값 : ")), int(input("랜덤 최대값 : ")), relatedColumns, input("날짜형식 %Y-%m-%d %H:%M:%S = 년도-월-일 시:분:초 : "))
         return True
     else:
         print(noneMsg)
@@ -47,7 +73,7 @@ def SelectAlgorithm(column: str, sel: int):
 # Entry Point
 if __name__ == '__main__':
     url = input("Enter Excel File Location : ")
-    dataFrame = pandas.read_excel("../TestExcelFiles/test.xlsx")
+    dataFrame = pandas.read_excel("../TestExcelFiles/test.xlsx", index_col=0)
     columns = list(dataFrame.columns)
     indexSize = dataFrame.shape[0]
     print('총 ', len(columns), '개의 퀄럼을 찾았습니다!', sep='')

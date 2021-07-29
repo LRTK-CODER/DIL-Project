@@ -45,7 +45,7 @@ class DIDA:
 
     # 총계처리 알고리즘 : Type('int', 'float'), Mode(0 : 실수, 1 : 정수(사사오입 원칙에 따라 반올림))
     def Aggregation(self, columnName: str, rowsCount: int, start: float, end: float, mode: int):
-        result: float = 0;
+        result: float = 0
 
         # 사용 가능한 타입 검사
         if not str(type(self.dataFrame.loc[0, columnName])) == "<class 'numpy.int64'>" or str(type(self.dataFrame.loc[0, columnName])) == "<class 'numpy.float'>":
