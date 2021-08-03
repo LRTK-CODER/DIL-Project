@@ -7,6 +7,7 @@ import pandas.util._test_decorators as td
 
 import pandas as pd
 import pandas._testing as tm
+from pandas.api.types import is_extension_array_dtype
 
 dtypes = [
     "int64",
@@ -28,10 +29,14 @@ def test_unary_unary(dtype):
 
 
 @pytest.mark.parametrize("dtype", dtypes)
-def test_unary_binary(dtype):
+def test_unary_binary(request, dtype):
     # unary input, binary output
-    if pd.api.types.is_extension_array_dtype(dtype) or isinstance(dtype, dict):
-        pytest.xfail(reason="Extension / mixed with multiple outuputs not implemented.")
+    if is_extension_array_dtype(dtype) or isinstance(dtype, dict):
+        request.node.add_marker(
+            pytest.mark.xfail(
+                reason="Extension / mixed with multiple outputs not implemented."
+            )
+        )
 
     values = np.array([[-1, -1], [1, 1]], dtype="int64")
     df = pd.DataFrame(values, columns=["A", "B"], index=["a", "b"]).astype(dtype=dtype)
@@ -95,14 +100,18 @@ def test_ufunc_passes_args(func, arg, expected, request):
 
 @pytest.mark.parametrize("dtype_a", dtypes)
 @pytest.mark.parametrize("dtype_b", dtypes)
-def test_binary_input_aligns_columns(dtype_a, dtype_b):
+def test_binary_input_aligns_columns(request, dtype_a, dtype_b):
     if (
-        pd.api.types.is_extension_array_dtype(dtype_a)
+        is_extension_array_dtype(dtype_a)
         or isinstance(dtype_a, dict)
-        or pd.api.types.is_extension_array_dtype(dtype_b)
+        or is_extension_array_dtype(dtype_b)
         or isinstance(dtype_b, dict)
     ):
-        pytest.xfail(reason="Extension / mixed with multiple inputs not implemented.")
+        request.node.add_marker(
+            pytest.mark.xfail(
+                reason="Extension / mixed with multiple inputs not implemented."
+            )
+        )
 
     df1 = pd.DataFrame({"A": [1, 2], "B": [3, 4]}).astype(dtype_a)
 
@@ -127,9 +136,13 @@ def test_binary_input_aligns_columns(dtype_a, dtype_b):
 
 
 @pytest.mark.parametrize("dtype", dtypes)
-def test_binary_input_aligns_index(dtype):
-    if pd.api.types.is_extension_array_dtype(dtype) or isinstance(dtype, dict):
-        pytest.xfail(reason="Extension / mixed with multiple inputs not implemented.")
+def test_binary_input_aligns_index(request, dtype):
+    if is_extension_array_dtype(dtype) or isinstance(dtype, dict):
+        request.node.add_marker(
+            pytest.mark.xfail(
+                reason="Extension / mixed with multiple inputs not implemented."
+            )
+        )
     df1 = pd.DataFrame({"A": [1, 2], "B": [3, 4]}, index=["a", "b"]).astype(dtype)
     df2 = pd.DataFrame({"A": [1, 2], "B": [3, 4]}, index=["a", "c"]).astype(dtype)
     with tm.assert_produces_warning(FutureWarning):
@@ -243,7 +256,10 @@ def test_alignment_deprecation_many_inputs():
     # https://github.com/pandas-dev/pandas/issues/39184
     # test that the deprecation also works with > 2 inputs -> using a numba
     # written ufunc for this because numpy itself doesn't have such ufuncs
-    from numba import float64, vectorize
+    from numba import (
+        float64,
+        vectorize,
+    )
 
     @vectorize([float64(float64, float64, float64)])
     def my_ufunc(x, y, z):

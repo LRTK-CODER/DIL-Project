@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Project\개인정보 비식별 기술 스터디\de-identification-study\WolLu\de-identification\venv
+set VIRTUAL_ENV=C:\Project\de-identification-study\WolLu\de-identification\venv
 
 if not defined PROMPT set PROMPT=$P$G
 
