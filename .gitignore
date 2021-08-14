@@ -1,3 +1,7 @@
 # LRTK ignore
 *.DS_Store
+/User/LRTK/Code/bin
+/User/LRTK/Code/include
+/User/LRTK/Code/lib
+/User/LRTK/Code/pyvenv.cfg
 # end
