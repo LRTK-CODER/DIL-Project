@@ -1,31 +1,49 @@
 import pandas
+import error
 
 DataFrame = pandas.DataFrame
 
-def isType(data:DataFrame):
-    for col in data.columns:
-        if data.loc[:, col].dtype != object:
-            data.loc[:,col] = data.loc[:, col].astype(str)
+class Anonymity:
+    def __init__(self, df:DataFrame, columns:list, k:int=10):
+        try:
+            if columns == []:
+                raise error.ColumnsEmptyError
+            else:
+                self.columns = columns
+        except Exception as e:
+            return print('[Init Error]', e)
 
-def run(data:DataFrame, k=10, delete=False):
-    isType(data)
+        try:
+            if k < 1:
+                raise error.KSizeError
+            else:
+                self.k = k
+        except Exception as e:
+            return print('[Init Error]', e)
 
-    values = []
-    for _, row in data.iterrows():
-        # query = ' and '.join([f'({col} == "{row[col]}")' for col in data.columns])
-        query = ' and '.join([f'({col} == "{row[col]}")' for col in ['이름']])
-        result = data.query(query)
+        self.df = df
+        self.result, self.overlaps = {}, {}
+        for col in self.columns:
+            self.result[col] = {}
+            self.overlaps[col] = sorted(list(set(self.df.loc[:, col])))
 
-        values.append(result.shape[0])
+    def isType(self):
+        for col in self.columns:
+            if self.df.loc[:, col].dtype != object:
+                self.df.loc[:, col] = self.df.loc[:, col].astype(str)
 
-    data.insert(0, 'k', values)
-    
-    if delete:
-        result = data.query(f'k > {k}')
-        return result
+    def run(self):
+        self.isType()
+
+        for col in self.columns:
+            for overlap in self.overlaps[col]:
+                self.result[col][overlap] = len(self.df.query(f'{col} == "{overlap}"'))
+        
+        return self.result
 
 if __name__ == '__main__':
     excel = pandas.read_csv('../../Sample/kTest.csv', index_col=0)
-    
-    result = run(excel, delete=True)
-    print(excel.head())
+    print('데이터 컬럼 >>>>', list(excel))
+
+    test = Anonymity(excel, ['이름', '성별', '나이', '주소'])
+    print(test.run())
