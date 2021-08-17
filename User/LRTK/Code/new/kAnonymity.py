@@ -29,6 +29,3 @@ if __name__ == '__main__':
     
     result = run(excel, delete=True)
     print(excel.head())
-    print(result.head())
-
-    Test
