@@ -1,4 +1,4 @@
-import pandas
+import pandas, time
 import error
 
 DataFrame = pandas.DataFrame
@@ -32,19 +32,24 @@ class Anonymity:
         self.isType()
 
         values = []
-        for _, row in self.df.iterrows():
-            query = ' and '.join([f'({col} == "{row[col]}")' for col in self.df.columns])
+        for index, row in self.df.iterrows():
+            query = ' and '.join([f'({col} == "{row[col]}")' for col in self.columns])
             queryResult = self.df.query(query)
+            # print(f'{index} 완료 >>>' + query)
 
             values.append(queryResult.shape[0])
 
         self.df.insert(0, 'k', values)
 
 if __name__ == '__main__':
-    excel = pandas.read_csv('../../../Sample/kTest.csv', index_col=0)
+    excel = pandas.read_csv('../../../Sample/kTest_Full.csv', index_col=0)
     print('데이터 컬럼 >>>>', list(excel))
 
-    test = Anonymity(excel, ['성별', '나이', '주소'])
+    test = Anonymity(excel, ['주소', '성별', '나이'])
+    
+    start = time.time()
     test.run()
+    print("time :", time.time() - start)
+
     print(excel)
     # excel.to_csv('./result.csv', encoding='utf-8-sig') 
