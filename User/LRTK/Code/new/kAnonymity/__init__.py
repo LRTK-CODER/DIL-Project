@@ -22,10 +22,6 @@ class Anonymity:
             return print('[Init Error]', e)
 
         self.df = df
-        self.result, self.overlaps = {}, {}
-        for col in self.columns:
-            self.result[col] = {}
-            self.overlaps[col] = sorted(list(set(self.df.loc[:, col])))
 
     def isType(self):
         for col in self.columns:
@@ -35,15 +31,20 @@ class Anonymity:
     def run(self):
         self.isType()
 
-        for col in self.columns:
-            for overlap in self.overlaps[col]:
-                self.result[col][overlap] = len(self.df.query(f'{col} == "{overlap}"'))
-        
-        return self.result
+        values = []
+        for _, row in self.df.iterrows():
+            query = ' and '.join([f'({col} == "{row[col]}")' for col in self.df.columns])
+            queryResult = self.df.query(query)
+
+            values.append(queryResult.shape[0])
+
+        self.df.insert(0, 'k', values)
 
 if __name__ == '__main__':
-    excel = pandas.read_csv('../../Sample/kTest.csv', index_col=0)
+    excel = pandas.read_csv('../../../Sample/kTest.csv', index_col=0)
     print('데이터 컬럼 >>>>', list(excel))
 
-    test = Anonymity(excel, ['이름', '성별', '나이', '주소'])
-    print(test.run())
+    test = Anonymity(excel, ['성별', '나이', '주소'])
+    test.run()
+    print(excel)
+    # excel.to_csv('./result.csv', encoding='utf-8-sig') 
