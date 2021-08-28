@@ -9,9 +9,9 @@ def meanAggregation(df: dataFrame, indexSize: int, columnName: str, start: int =
     '''
     Creator: 정재윤
     Create Date: 2021.07.09
-    Last Modified Date: 2021.07.17
-    Version: 2.0
-    Support Type: 정수, 실수
+    Last Modified Date: 2021.08.20
+    Version: 2.2
+    Support Type: Int, Float
   
     [Explanation]
     이 함수는 columnName 이름의 행의 start 부터 end까지의 데이터를 평균값으로 총계처리하여
@@ -28,15 +28,15 @@ def meanAggregation(df: dataFrame, indexSize: int, columnName: str, start: int =
     if end == 0 or end > indexSize:
         end = indexSize
 
-    for i in range(start, end + 1):
+    for i in range(start, end):
         result += df.loc[i, columnName]
 
-    result /= (end - start) + 1
+    result /= (end - start)
 
     if(isRound == True):
         result = round(result)
 
-    for i in range(start, end + 1):
+    for i in range(start, end):
         df.loc[i, columnName] = result
 
     return True
@@ -46,9 +46,9 @@ def maxAggregation(df: dataFrame, indexSize: int, columnName: str, start: int = 
     '''
         Creator: 정재윤
         Create Date: 2021.07.09
-        Last Modified Date: 2021.07.17
-        Version: 2.0
-        Support Type: Int
+        Last Modified Date: 2021.08.20
+        Version: 2.1
+        Support Type: Int, Float
 
         [Explanation]
         이 함수는 columnName 이름의 행의 start 부터 end까지의 데이터를 최대값으로 총계처리하여
@@ -64,13 +64,13 @@ def maxAggregation(df: dataFrame, indexSize: int, columnName: str, start: int = 
     if end == 0 or end > indexSize:
         end = indexSize
 
-    for i in range(start, end + 1):
+    for i in range(start, end):
         data = df.loc[i, columnName]
 
         if(data > result):
             result = data
 
-    for i in range(start, end + 1):
+    for i in range(start, end):
         df.loc[i, columnName] = result
 
     return True
@@ -80,8 +80,9 @@ def minAggregation(df: dataFrame, indexSize: int, columnName: str, start: int = 
     '''
         Creator: 정재윤
         Create Date: 2021.07.09
-        Last Modified Date: 2021.07.17
-        Support Type: Int
+        Last Modified Date: 2021.08.20
+        Version: 1.1
+        Support Type: Int, Float
 
         [Explanation]
         이 함수는 columnName 이름의 행의 start 부터 end까지의 데이터를 최소값으로 총계처리하여
@@ -97,12 +98,12 @@ def minAggregation(df: dataFrame, indexSize: int, columnName: str, start: int = 
     if end == 0 or end > indexSize:
         end = indexSize
 
-    for i in range(start, end + 1):
+    for i in range(start, end):
         data = df.loc[i, columnName]
         if(data < result):
             result = data
 
-    for i in range(start, end + 1):
+    for i in range(start, end):
         df.loc[i, columnName] = result
 
     return True
@@ -112,8 +113,9 @@ def midAggregation(df: dataFrame, indexSize: int, columnName: str, start: int = 
     '''
         Creator: 정재윤
         Create Date: 2021.07.09
-        Last Modified Date: 2021.07.17
-        Support Type: Int
+        Last Modified Date: 2021.08.20
+        Version: 1.1
+        Support Type: Int, Float
 
         [Explanation]
         이 함수는 columnName 이름의 행의 start 부터 end까지의 데이터를 중앙값으로 총계처리하여
@@ -126,7 +128,7 @@ def midAggregation(df: dataFrame, indexSize: int, columnName: str, start: int = 
     if end == 0 or end > indexSize:
         end = indexSize
 
-    for i in range(start, end + 1):
+    for i in range(start, end):
         df.loc[i, columnName] = result
 
     return True
@@ -136,8 +138,9 @@ def modeAggregation(df: dataFrame, indexSize: int, columnName: str, start: int =
     '''
         Creator: 정재윤
         Create Date: 2021.07.09
-        Last Modified Date: 2021.07.17
-        Support Type: Int
+        Last Modified Date: 2021.08.20
+        Version: 1.1
+        Support Type: Int, Float
 
         [Explanation]
         이 함수는 columnName 이름의 행의 start 부터 end까지의 데이터를 최빈값으로 총계처리하여
@@ -151,7 +154,7 @@ def modeAggregation(df: dataFrame, indexSize: int, columnName: str, start: int =
 
     result = stats.mode(datas)[0]
 
-    for i in range(start, end + 1):
+    for i in range(start, end):
         df.loc[i, columnName] = result
 
     return True
