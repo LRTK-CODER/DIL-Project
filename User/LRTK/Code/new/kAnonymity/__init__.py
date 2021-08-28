@@ -42,6 +42,7 @@ if __name__ == '__main__':
     print('데이터 컬럼 >>>>', list(excel))
 
     test = Anonymity(excel, ['주소', '성별', '나이', '이름'])
+    # test = Anonymity(excel, [])
     
     start = time.time()
     print(test.run())
