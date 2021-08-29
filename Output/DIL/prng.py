@@ -4,11 +4,23 @@ import random
 
 dataFrame = pandas.core.frame.DataFrame
 
-# 의사난수
-# https://www.delftstack.com/ko/howto/python/random-string-python/
-
 class prng:
     def prng(dF:dataFrame, indexSize, columns):
+
+        '''
+        Title : (의사) 난수생성기 (Pseudo) Random Number Generator
+        Creator : 홍성민
+        Version : 1.0
+        Support Type : str 
+
+        [Explanation]
+            column의 모든 값들을 의사난수화 한다.
+            참고 : https://www.delftstack.com/ko/howto/python/random-string-python/
+
+        [Parameter]
+            <None>
+        '''
+        
         number_of_strings = indexSize # 개수
         length_of_string = 0 # 길이
 
