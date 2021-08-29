@@ -1,0 +1,2 @@
+def LocalGeneraliztion():
+    pass
