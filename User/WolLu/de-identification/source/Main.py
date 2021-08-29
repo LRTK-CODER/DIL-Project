@@ -1,9 +1,12 @@
 import pandas
-import Aggregation
+from library import Aggregation
 import Randomization
 import KAnonymity
 import LDiversity
 
+Aggregation.meanAggregation()
+
+Aggregation.meanAggregation()
 # 알고리즘 목록 출력 함수
 def PrintDidaAlgorithm():
     print()
