@@ -10,13 +10,15 @@ class Suppression:
         self.column = column
         self.datas = df.loc[:, column]
     
-    def __errorControl(self) -> boolean:
+    def __errorControl(self, scope=None, data=None, currentIndexList=None) -> boolean:
         try:
-            if len(str(data)) < seatNum:
+            if (scope and data) and (max(scope) >= len(data)):
+                raise error.MaximumRangeError
+            if currentIndexList and max(currentIndexList) >= len(self.df):
                 raise error.MaximumRangeError
 
         except Exception as e:
-            print('[SeatNum Error]', e)
+            print('[Scope Error]', e)
             return  False
         
         return True
@@ -27,25 +29,41 @@ class Suppression:
             if type(data) is int:
                 data = str(data)
             
+            if not self.__errorControl(scope=scope, data=data):
+                return
+
             data = list(data)
+
             del data[scope[0]:scope[1]+1]
             result.append(''.join(data))
         
         self.df.loc[:, self.column] = result
 
-    def record(self, currentIndexList:list) -> DataFrame:
+    def record(self, currentIndexList:list) -> None or DataFrame:
+        if not self.__errorControl(currentIndexList=currentIndexList):
+            return
+        
         self.datas = self.df.values.tolist()
         
         for index in currentIndexList:
             del self.datas[index]
         
-        return pandas
+        return pandas.DataFrame(self.datas, columns=list(self.df))
+
+    def local(self, currentIndexList:list):
+        if not self.__errorControl(currentIndexList=currentIndexList):
+            return
+
+        result = []
+        for data in self.datas:
+            pass
+
 
 if __name__ == '__main__':
     excel = pandas.read_csv('../../../Sample/kTest_Full.csv', index_col=0)
-    # print(excel.head())
+    print(excel.head())
 
     delete = Suppression(excel, '전화번호')
     # delete.partial(scope=[3,8])
-    # delete.record(currentIndexList=[0,4])
-    # print(excel.head())
+    excel = delete.record(currentIndexList=[0,10000000000000])
+    print(excel.head())
