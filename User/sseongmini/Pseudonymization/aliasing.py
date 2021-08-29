@@ -32,7 +32,7 @@ class SimpleEnDecrypt:
 
 simpleEnDecrypt = SimpleEnDecrypt()
 
-df = pd.read_excel('test.xlsx')
+df = pd.read_excel('../test.xlsx')
 
 name_list = ["홍길동", "임꺽정", "김철수", "이영희"]
 
