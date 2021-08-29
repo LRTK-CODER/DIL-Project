@@ -6,7 +6,7 @@ dataFrame = pandas.core.frame.DataFrame
 
 class Aggregation:
     # 평균값 총계처리
-    def meanAggregation(df: dataFrame, indexSize: int, columnName: str, start: int = 0, end: int = 0, isRound:bool = False):
+    def meanAggregation(self, df: dataFrame, indexSize: int, columnName: str, start: int = 0, end: int = 0, isRound:bool = False):
         '''
         Creator: 정재윤
         Create Date: 2021.07.09
@@ -43,7 +43,7 @@ class Aggregation:
         return True
 
     # 최대값 총계처리
-    def maxAggregation(df: dataFrame, indexSize: int, columnName: str, start: int = 0, end: int = 0):
+    def maxAggregation(self, df: dataFrame, indexSize: int, columnName: str, start: int = 0, end: int = 0):
         '''
             Creator: 정재윤
             Create Date: 2021.07.09
@@ -77,7 +77,7 @@ class Aggregation:
         return True
 
     # 최소값 총계처리
-    def minAggregation(df: dataFrame, indexSize: int, columnName: str, start: int = 0, end: int = 0):
+    def minAggregation(self, df: dataFrame, indexSize: int, columnName: str, start: int = 0, end: int = 0):
         '''
             Creator: 정재윤
             Create Date: 2021.07.09
@@ -110,7 +110,7 @@ class Aggregation:
         return True
 
     # 중앙값 총계처리
-    def midAggregation(df: dataFrame, indexSize: int, columnName: str, start: int = 0, end: int = 0):
+    def midAggregation(self, df: dataFrame, indexSize: int, columnName: str, start: int = 0, end: int = 0):
         '''
             Creator: 정재윤
             Create Date: 2021.07.09
@@ -135,7 +135,7 @@ class Aggregation:
         return True
 
     # 최빈값 총계처리
-    def modeAggregation(df: dataFrame, indexSize: int, columnName: str, start: int = 0, end: int = 0):
+    def modeAggregation(self, df: dataFrame, indexSize: int, columnName: str, start: int = 0, end: int = 0):
         '''
             Creator: 정재윤
             Create Date: 2021.07.09
