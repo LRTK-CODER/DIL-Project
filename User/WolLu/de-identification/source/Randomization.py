@@ -11,7 +11,7 @@ def noiseAdditionOfInt(df: dataFrame, indexSize: int, columnName: str, startNum:
     Create Date: 2021.07.17
     Last Modified Date: 2021.07.17
     Version: 1.0
-    Support Type: Int
+    Support Type: Int, Float
 
     [Explanation]
     이 함수는 columnName 이름의 행의 모든 데이터에 random값 (startNum 부터 endNum까지)을 추가하고 추가한 값을,
