@@ -3,7 +3,7 @@ import pandas
 dataFrame = pandas.core.frame.DataFrame
 
 # L 다양성 메인 함수
-def lDiversity(df: dataFrame, setColumn: str, checkColumn: str):
+def lDiversity(df: dataFrame, checkColumn: str, setColumn: str,):
     '''
     Creator: 정재윤
     Create Date: 2021.08.20

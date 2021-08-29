@@ -1,5 +1,6 @@
 import pandas
 from Output.DIL import Aggregation, Randomization
+import Permutation
 import KAnonymity
 import LDiversity
 
@@ -17,6 +18,7 @@ def PrintDidaAlgorithm():
     print('# 무작위화 #')
     print(' 6. 잡음추가 - 숫자형')
     print(' 7. 잡음추가 - 날짜형')
+    print(' 8. 순열(치환)')
     print()
     print(' 0. 적용안함')
     print('======================')
@@ -67,6 +69,9 @@ def SelectAlgorithm(column: str, sel: int):
 
         Randomization.noiseAdditionOfDate(dataFrame, indexSize, column, int(input("[+] 랜덤 최소값 : ")), int(input("[+] 랜덤 최대값 : ")), relatedColumns, input("[+] 날짜형식 %Y-%m-%d %H:%M:%S = 년도-월-일 시:분:초 : "))
         return True
+    elif (sel == 8):
+        Permutation.Permutation.permutation(dataFrame, indexSize, column)
+        return True
     else:
         print(noneMsg)
         return False
@@ -74,7 +79,7 @@ def SelectAlgorithm(column: str, sel: int):
 # Entry Point
 if __name__ == '__main__':
     url = input("[+] Enter Excel File Location : ")
-    dataFrame = pandas.read_excel("../TestExcelFiles/test.xlsx", index_col=0)
+    dataFrame = pandas.read_csv("../../../../Sample/test_100.csv", index_col=0)
     columns = list(dataFrame.columns)
     indexSize = dataFrame.shape[0]
     print('[*] 총 ', len(columns), '개의 퀄럼을 찾았습니다!', sep='')
@@ -100,11 +105,11 @@ if __name__ == '__main__':
                 exceptionColumns.append(inputValue)
             print(KAnonymity.kAnonymity(dataFrame, indexSize, exceptionColumns))
             # K-익명성 검사 END & L-다양성 검사
-            print(LDiversity.lDiversity(dataFrame, input("[+] L-다양성 검사에서 사용할 동질집합 퀄럼을 지정해주세요! : "), input("[+] L-다양성 검사에서 사용할 퀄럼을 지정해주세요! : ")))
+            # print(LDiversity.lDiversity(dataFrame, input("[+] L-다양성 검사에서 사용할 동질집합 퀄럼을 지정해주세요! : "), input("[+] L-다양성 검사에서 사용할 퀄럼을 지정해주세요! : ")))
 
             inputValue = input("[+] 비식별화를 다시 진행할까요? [현재 데이터는 유지됩니다] : ")
             if inputValue != '0':
                 i = 1
 
     print(dataFrame)
-    dataFrame.to_excel("../TestExcelFiles/result.xlsx", sheet_name="Sheet1")
+    dataFrame.to_csv("../TestCsvFiles/result.csv")
