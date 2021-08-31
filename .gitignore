@@ -4,4 +4,5 @@ User/LRTK/Code/new/bin/
 /User/LRTK/Code/new/include
 /User/LRTK/Code/new/lib
 /User/LRTK/Code/new/pyvenv.cfg
-# end
+/Output/__pycache__
+/Output/DIL/__pycache__
