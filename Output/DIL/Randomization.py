@@ -6,7 +6,7 @@ dataFrame = pandas.core.frame.DataFrame
 
 class Randomization:
     # 숫자형 잡음 추가
-    @staticmethod
+    @classmethod
     def noiseAdditionOfInt(df: dataFrame, indexSize: int, columnName: str, startNum: int, endNum: int, relatedColumns: list):
         '''
         Creator: 정재윤
@@ -34,7 +34,7 @@ class Randomization:
         return True
 
     # 날짜형 잡음 추가
-    @staticmethod
+    @classmethod
     def noiseAdditionOfDate(df: dataFrame, indexSize: int, columnName: str, startNum: int, endNum: int, relatedColumns: list, dateFormat: str):
         '''
         Creator: 정재윤

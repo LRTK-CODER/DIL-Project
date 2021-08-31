@@ -6,7 +6,7 @@ dataFrame = pandas.core.frame.DataFrame
 
 class Aggregation:
     # 평균값 총계처리
-    @staticmethod
+    @classmethod
     def meanAggregation(df: dataFrame, indexSize: int, columnName: str, start: int = 0, end: int = 0, isRound:bool = False):
         '''
         Creator: 정재윤
@@ -44,7 +44,7 @@ class Aggregation:
         return True
 
     # 최대값 총계처리
-    @staticmethod
+    @classmethod
     def maxAggregation(df: dataFrame, indexSize: int, columnName: str, start: int = 0, end: int = 0):
         '''
             Creator: 정재윤
@@ -79,7 +79,7 @@ class Aggregation:
         return True
 
     # 최소값 총계처리
-    @staticmethod
+    @classmethod
     def minAggregation(df: dataFrame, indexSize: int, columnName: str, start: int = 0, end: int = 0):
         '''
             Creator: 정재윤
@@ -113,7 +113,7 @@ class Aggregation:
         return True
 
     # 중앙값 총계처리
-    @staticmethod
+    @classmethod
     def midAggregation(df: dataFrame, indexSize: int, columnName: str, start: int = 0, end: int = 0):
         '''
             Creator: 정재윤
@@ -139,7 +139,7 @@ class Aggregation:
         return True
 
     # 최빈값 총계처리
-    @staticmethod
+    @classmethod
     def modeAggregation(df: dataFrame, indexSize: int, columnName: str, start: int = 0, end: int = 0):
         '''
             Creator: 정재윤
