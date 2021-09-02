@@ -16,7 +16,7 @@ class twoCrypt:
 
         f = Fernet(self.key)
         # 키를 파일에 저장
-        with open('C:/Users/zzxcv/Desktop/python/test.txt', 'w') as file:
+        with open('test.txt', 'w') as file:
             file.write(str(self.key.decode()))
 
         for i in range(indexSize):
@@ -27,12 +27,10 @@ class twoCrypt:
     def twoDecrypt(self, dF:dataFrame, indexSize, columns):
 
         # 파일에서 키를 읽기
-        file = open('C:/Users/zzxcv/Desktop/python/test.txt', 'r')
-        print('키값은 {} 입니다.\n'.format(file.read()))
-
-        originkey = file.readlines()
-        f = Fernet(originkey)
-        print(f)
+        file = open('test.txt', 'r')
+        originkey = file.readline()
+        print('키값은 {} 입니다.\n'.format(originkey))
+        f = Fernet(originkey.encode())
 
         for i in range(indexSize):
             dF.loc[i, columns] = f.decrypt(str(dF.loc[i, columns]).encode()).decode()
@@ -40,7 +38,7 @@ class twoCrypt:
         return True
 
 
-dataFrame = pandas.read_csv("C:/Users/zzxcv/Desktop/python/DIL/Sample/test_100.csv", index_col=0)
+dataFrame = pandas.read_csv("../../Sample/test_100.csv", index_col=0)
 columns = '회원번호'
 indexSize = dataFrame.shape[0]
 
