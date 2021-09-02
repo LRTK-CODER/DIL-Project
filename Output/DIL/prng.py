@@ -4,13 +4,13 @@ import random
 
 dataFrame = pandas.core.frame.DataFrame
 
-class prng:
+class PRNG:
     def prng(dF:dataFrame, indexSize, columns):
 
         '''
         Title : (의사) 난수생성기 (Pseudo) Random Number Generator
         Creator : 홍성민
-        Version : 1.0
+        Version : 1.0.0
         Support Type : str 
 
         [Explanation]
@@ -18,7 +18,7 @@ class prng:
             참고 : https://www.delftstack.com/ko/howto/python/random-string-python/
 
         [Parameter]
-            <None>
+            <No Additions>
         '''
         
         number_of_strings = indexSize # 개수

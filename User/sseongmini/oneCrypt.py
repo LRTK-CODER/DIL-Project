@@ -9,7 +9,7 @@ dataFrame = pandas.core.frame.DataFrame
 class oneCrypt:
     
     m = hashlib.sha256()
-
+    
     def oneEncrypt(self, dF:dataFrame, indexSize, columns):
 
         for i in range(indexSize):
@@ -17,3 +17,11 @@ class oneCrypt:
             dF.loc[i, columns] = self.m.hexdigest()
 
         return True
+
+dataFrame = pandas.read_csv("C:/Users/zzxcv/Desktop/python/DIL/Sample/test_100.csv", index_col=0)
+columns = '회원번호'
+indexSize = dataFrame.shape[0]
+
+a = oneCrypt()
+a.oneEncrypt(dataFrame, indexSize, columns)
+print(dataFrame['회원번호'])
