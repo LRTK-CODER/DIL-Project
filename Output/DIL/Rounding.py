@@ -2,7 +2,7 @@ import pandas, error, random
 
 DataFrame = pandas.DataFrame
 
-class Round:
+class Rounding:
     def __errorControl(self, data:int, seatNum:int):
         try:
             if seatNum < 0:
