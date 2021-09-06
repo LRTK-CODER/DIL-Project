@@ -29,12 +29,3 @@ class Generaliztion:
         datas = self.df.loc[:, column]
         result = [category if data in replaceList else data for data in datas]
         self.df.loc[:, column] = result
-
-if __name__ == '__main__':
-    excel = pandas.read_csv('../../../Sample/kTest_Full.csv', index_col=0)
-    print(excel.head())
-    
-    test = Generaliztion(excel)
-    test.local('총 구매 금액', [0, 2])
-    test.categorizion('주소', ['전라남도', '전라북도'], '전라도')
-    print(excel.head())
