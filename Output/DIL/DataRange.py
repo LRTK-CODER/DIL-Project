@@ -1,2 +1,0 @@
-def DataRange():
-    pass

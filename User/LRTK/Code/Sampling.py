@@ -1,4 +1,4 @@
-import pandas
+import pandas, error
 
 DataFrame = pandas.DataFrame
 
@@ -7,7 +7,7 @@ def Sampling(datas:DataFrame, indexSize:int, percent:int) -> DataFrame:
     return datas
 
 if __name__ == '__main__':
-    excel = pandas.read_excel('../test.xlsx', index_col=0)
+    excel = pandas.read_excel('../../../Sample/kTest_Full.csv', index_col=0)
     indexSize = len(excel)
     print(excel)
     print(run(excel, indexSize, percent=10))
