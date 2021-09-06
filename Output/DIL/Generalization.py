@@ -25,7 +25,7 @@ class Generaliztion:
         datas = self.df.loc[currentIndexList[0]:currentIndexList[1], column]
         self.df.loc[currentIndexList[0]:currentIndexList[1], column] = [f'{min(datas)}~{max(datas)}' for _ in datas]
 
-    def categorizion(self, column:str, replaceList:list, category:str):
+    def categorizion(self, column:str, replaceList:list, category:str) -> None:
         datas = self.df.loc[:, column]
         result = [category if data in replaceList else data for data in datas]
         self.df.loc[:, column] = result
