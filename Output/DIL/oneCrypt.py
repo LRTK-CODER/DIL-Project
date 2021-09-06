@@ -3,7 +3,7 @@ import hashlib
 
 dataFrame = pandas.core.frame.DataFrame
 
-class oneCrypt:
+class Onecrypt:
 
     m = hashlib.sha256()
 
@@ -12,7 +12,7 @@ class oneCrypt:
         '''
         Title : 일방향 암호화 - 암호학적 해시함수 (One-way encryption - Cryptographic hash function)
         Creator : 홍성민
-        Version : 1.0
+        Version : 1.0.0
         Support Type : str 
 
         [Explanation]
@@ -20,7 +20,7 @@ class oneCrypt:
             참고 : https://wikidocs.net/122201
             
         [Parameter]
-            <None>
+            <No Additions>
         '''
         
         for i in range(indexSize):
