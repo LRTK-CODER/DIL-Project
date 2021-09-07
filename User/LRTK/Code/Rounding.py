@@ -63,6 +63,6 @@ if __name__ == '__main__':
     excel = pandas.read_csv('../../../Sample/kTest_Full.csv', index_col=0)
     print(excel.head())
     
-    round = Round()
+    round = Rounding()
     round.random(df=excel, column='총 구매 금액')
     print(excel.head())
