@@ -1,4 +1,4 @@
-import pandas, error
+import pandas, Error
 
 DataFrame = pandas.DataFrame
 
@@ -9,9 +9,9 @@ class Generaliztion:
     def __errorControl(self, currentIndexList:list, column:str):
         try:
             if max(currentIndexList) > len(self.df):
-                raise error.Error('설정된 범위가 전체 크기보다 큽니다.')
+                raise Error.Error('설정된 범위가 전체 크기보다 큽니다.')
             elif self.df.loc[:, column].dtype != 'int64':
-                raise error.Error('숫자형 데이터만 사용이 가능합니다.')
+                raise Error.Error('숫자형 데이터만 사용이 가능합니다.')
             
             return False
         except Exception as e:

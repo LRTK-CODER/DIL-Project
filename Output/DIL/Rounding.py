@@ -1,4 +1,4 @@
-import pandas, error, random
+import pandas, Error, random
 
 DataFrame = pandas.DataFrame
 
@@ -6,9 +6,9 @@ class Rounding:
     def __errorControl(self, data:int, seatNum:int):
         try:
             if seatNum < 0:
-                raise error.Error('라운딩할 자리는 0보다 커야합니다.')
+                raise Error.Error('라운딩할 자리는 0보다 커야합니다.')
             elif len(str(data)) < seatNum:
-                raise error.Error('라운딩할 자리가 최대 범위를 넘어섰습니다.')
+                raise Error.Error('라운딩할 자리가 최대 범위를 넘어섰습니다.')
 
             return False
         except Exception as e:

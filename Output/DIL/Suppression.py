@@ -1,4 +1,4 @@
-import pandas, error
+import pandas, Error
 
 # Data Type Definition
 DataFrame = pandas.core.frame.DataFrame
@@ -21,13 +21,13 @@ class Suppression:
             if columns:
                 for col in columns:
                     if col not in list(self.df):
-                        raise error.Error('삭제하고자 하는 컬럼이 없습니다.')
+                        raise Error.Error('삭제하고자 하는 컬럼이 없습니다.')
 
             if (scope and data) and (max(scope) >= len(data)):
-                raise error.Error('삭제하고자 하는 데이터의 최대범위를 넘어섰습니다.')
+                raise Error.Error('삭제하고자 하는 데이터의 최대범위를 넘어섰습니다.')
 
             if currentIndexList and max(currentIndexList) >= len(self.df):
-                raise error.Error('최대범위를 넘어섰습니다.')
+                raise Error.Error('최대범위를 넘어섰습니다.')
             
 
         except Exception as e:

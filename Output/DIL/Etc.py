@@ -1,4 +1,4 @@
-import pandas, error
+import pandas, Error
 
 DataFrame = pandas.DataFrame
 
@@ -6,9 +6,9 @@ class Etc:
     def __errorControl(self, datas:int, seatNum:int):
         try:
             if seatNum < 0:
-                raise error.Error('수정해야합니다.')
+                raise Error.Error('수정해야합니다.')
             elif len(str(data)) < seatNum:
-                raise error.Error('수정해야합니다.')
+                raise Error.Error('수정해야합니다.')
 
             return False
         except Exception as e:
