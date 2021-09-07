@@ -1,7 +1,7 @@
 from .Aggregation import Aggregation
 from .Error import Error
 from .Etc import Etc
-from .Generalization import Generaliztion
+from .Generalization import Generalization
 from .OneCrypt import Onecrypt
 from .Permutation import Permutation
 from .PRNG import PRNG
@@ -11,6 +11,6 @@ from .Suppression import Suppression
 from .TBC import TBC
 from .TwoCrypt import Twocrypt
 
-__all__ = ['Aggregation', 'Error', 'Etc', 'Generaliztion', 'Onecrypt',
+__all__ = ['Aggregation', 'Error', 'Etc', 'Generalization', 'Onecrypt',
            'Permutation', 'PRNG', 'Randomization', 'Rounding', 'Suppression',
            'TBC', "Twocrypt"]

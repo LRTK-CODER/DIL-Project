@@ -2,7 +2,7 @@ import pandas, Error
 
 DataFrame = pandas.DataFrame
 
-class Generaliztion:
+class Generalization:
     def __init__(self, df:DataFrame):
         self.df = df
 
