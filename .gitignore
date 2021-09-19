@@ -1,8 +1,3 @@
 # LRTK ignore
 *.DS_Store
-User/LRTK/Code/new/bin/
-/User/LRTK/Code/new/include
-/User/LRTK/Code/new/lib
-/User/LRTK/Code/new/pyvenv.cfg
-/Output/__pycache__
-/Output/DIL/__pycache__
+/User
