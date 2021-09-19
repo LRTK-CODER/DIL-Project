@@ -1,22 +1,21 @@
-# 개인정보 비식별 기술 스터디
+# De-Identification Library
 
-## 운영 방안
-- 각자의 디렉토리에 개인정보보호와 관련된 정보, 기술 등의 내용을 정리하여 업로드
-- Root Readme의 내용은 자료 정리를 위해 사용
+## DIL이란?
+빅데이터, AI 등 다양한 융·복합 산업에서의 데이터 이용 수요가 급증하고 있다.
+데이터 활용의 핵심인 가명 정보 활용에 대한 법적 근거가 마련되어 체계적인 데이터 활용 기반(가명처리 기술·절차·관리체계 등)이 조성됐다.
 
-### ✏️ 스터디 기여 방법
-[Git - GitHub 프로젝트에 기여하기](https://git-scm.com/book/ko/v2/GitHub-GitHub-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EC%97%90-%EA%B8%B0%EC%97%AC%ED%95%98%EA%B8%B0)의 내용 참고
+하지만 가명처리 기술을 구현할 대표적인 파이썬 라이브러리가 없다.
+이에 가명처리 기술을 구현하기 손쉽게 사용할 수 있는 라이브러리를 제작하여 개인정보 보호에 이바지하고자 개발하기로 했다.
 
-#### 🧲 Pull Request & Commit Message 규칙
-Pull Request 전, 자신이 fork한 저장소의 커밋 내역을 원격 저장소의 최신 커밋으로 fetch & merge 한 이후에 진행
+## 사용된 오픈소스
+pandas : https://github.com/pandas-dev/pandas
 
-- 최신 커밋으로 fetch & merge 하는 방법<br>
-  [ChanBLOG - Git fetch : fork한 저장소를 원래 저장소의 최신 커밋 내역으로 바꾸기](https://chanhuiseok.github.io/posts/git-2/) 참고
+---
+# DIL 기여
+모든 버그 보고서, 버그 수정, 문서 개선, 로직 개선 및 아이디어를 환영합니다.
+기여 방법에 대한 자세한 개요는 기여 가이드에서 참고하시길 바랍니다.
 
-- Pull Request(PR)를 하는 방법<br>
-  [ChanBLOG - Pull Request(PR) 보내는 방법 : Contribution 하기](https://chanhuiseok.github.io/posts/git-3/) 참고
-
-## 📗 스터디 자료
+## 개인정보 보호 기술 참고 자료
 - [개인정보 비식별 조치 가이드라인](https://www.kisa.or.kr/public/laws/laws2_View.jsp?cPage=1&mode=view&p_No=282&b_No=282&d_No=3&ST=T&SV=)
 - [보건의료 데이터 활용 가이드라인](http://www.mohw.go.kr/react/al/sal0101vw.jsp?PAR_MENU_ID=04&MENU_ID=040101&CONT_SEQ=363309&page=1)
 - [가명정보 처리 가이드라인](https://www.pipc.go.kr/np/default/page.do?mCode=D040010000#LINK)
