@@ -1,3 +1,4 @@
 # LRTK ignore
 *.DS_Store
-/User
+*__pycache__
+/Code
