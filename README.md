@@ -8,7 +8,8 @@
 이에 가명처리 기술을 구현하기 손쉽게 사용할 수 있는 라이브러리를 제작하여 개인정보 보호에 이바지하고자 개발하기로 했다.
 
 ## 사용된 오픈소스
-pandas : https://github.com/pandas-dev/pandas
+- pandas
+- pycryptodomex
 
 ## 구현한 기술
 ### 삭제기술
