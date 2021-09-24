@@ -27,6 +27,7 @@ suppressionTest = Suppression(excel)
 # suppressionTest.masking('이름', [1, 3])
 
 # 주소 부분 삭제
-suppressionTest.address('주소', 1)
+# suppressionTest.address('주소', 1)
+suppressionTest.address('주소', 2)
 
 print(excel.head())

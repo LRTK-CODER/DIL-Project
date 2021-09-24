@@ -1,24 +1,10 @@
-import pandas, Error, random
+import pandas, random
 
 DataFrame = pandas.DataFrame
 
 class Rounding:
-    def __errorControl(self, data:int, seatNum:int):
-        try:
-            if seatNum < 0:
-                raise Error.Error('라운딩할 자리는 0보다 커야합니다.')
-            elif len(str(data)) < seatNum:
-                raise Error.Error('라운딩할 자리가 최대 범위를 넘어섰습니다.')
-
-            return False
-        except Exception as e:
-            print('[SeatNum Error]', e)
-            return  True
-
-    def off(self, data:int, seatNum:int) -> int:
-        if self.__errorControl(data, seatNum):
-            return
-
+    @staticmethod
+    def off(data:int, seatNum:int) -> int:
         data = list(str(data))
         if int(data[-seatNum]) >= 5:
             data[-seatNum-1] = str(int(data[-seatNum-1]) + 1)
@@ -28,10 +14,8 @@ class Rounding:
         
         return int(''.join(data))
 
-    def up(self, data:int, seatNum:int) -> int:
-        if self.__errorControl(data, seatNum):
-            return
-
+    @staticmethod
+    def up(data:int, seatNum:int) -> int:
         data = list(str(data))
         if int(data[-seatNum]) or len(set(data[-seatNum:])) > 1:
             data[-seatNum-1] = str(int(data[-seatNum-1]) + 1)
@@ -39,22 +23,21 @@ class Rounding:
 
         return int(''.join(data))
 
-    def down(self, data:int, seatNum:int) -> int:
-        if self.__errorControl(data, seatNum):
-            return
-
+    @staticmethod
+    def down(data:int, seatNum:int) -> int:
         data = list(str(data))
         if int(data[-seatNum]) or len(set(data[-seatNum:])) > 1:
             data[-seatNum:] = '0' * len(data[-seatNum:])
 
         return int(''.join(data))
 
-    def random(self, df:DataFrame, column:str) -> None:
+    @staticmethod
+    def random(df:DataFrame, column:str) -> None:
         datas = df.loc[:, column]
         
         result = []
         for data in datas:
-            func = random.choice([self.up, self.down])
+            func = random.choice([Rounding.up, Rounding.down])
             result.append(func(data=data, seatNum=len(str(data))-1))
 
         df.loc[:, column] = result
