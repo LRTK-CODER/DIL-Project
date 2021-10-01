@@ -1,27 +1,16 @@
-import pandas, Error
+import pandas
+from .util import DataSetting
 
 DataFrame = pandas.DataFrame
 
-class Etc:
-    def __errorControl(self, datas:int, seatNum:int):
-        try:
-            if seatNum < 0:
-                raise Error.Error('수정해야합니다.')
-            elif len(str(data)) < seatNum:
-                raise Error.Error('수정해야합니다.')
-
-            return False
-        except Exception as e:
-            print('[SeatNum Error]', e)
-            return  True
-
-    def sampling(self, datas:DataFrame, percent:int) -> DataFrame:
-        datas = datas.loc[:,].sample(n=len(datas)//percent)
+class Etc(DataSetting):
+    def sampling(self, percent:int) -> DataFrame:
+        datas = self.datas.loc[:,].sample(n=len(self.datas)//percent)
         return datas
 
-    def anatomization(self, datas:DataFrame, codeColumn:str, currentColumnList:list) -> DataFrame:
-        currentColumnList.insert(0, codeColumn)
-        nonCurrentColumnList = list(set(list(datas)) - set(currentColumnList))
-        nonCurrentColumnList.insert(0, codeColumn)
+    def anatomization(self, identyColumn:str, currentColumnList:list) -> DataFrame:
+        currentColumnList.insert(0, identyColumn)
+        nonCurrentColumnList = list(set(list(self.datas)) - set(currentColumnList))
+        nonCurrentColumnList.insert(0, identyColumn)
         
-        return datas.loc[:, currentColumnList], datas.loc[:, nonCurrentColumnList]
+        return self.datas.loc[:, currentColumnList], self.datas.loc[:, nonCurrentColumnList]
