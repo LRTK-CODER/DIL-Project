@@ -23,3 +23,4 @@ class Aggregation(DataSetting):
     def median(self, column:str):
         medianValue = int(self.datas[column].median())
         self.datas[column] = [medianValue] * len(self.datas)
+        return self.datas[column]
