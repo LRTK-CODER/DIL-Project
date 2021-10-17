@@ -21,6 +21,12 @@ class TestAggregation:
     def _agrregationInit(self, agrregation_fixture):
         self._agrregation = agrregation_fixture
 
+    def test_mean(self):
+        mean_value = self._agrregation.mean('나이')
+
+        for value in mean_value:
+            assert value == 46
+
     def test_median(self):
         median_value = self._agrregation.median('나이')
 
