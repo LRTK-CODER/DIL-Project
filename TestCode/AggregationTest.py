@@ -4,7 +4,7 @@ sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 import pandas
 from DIL import statistics
 
-
+test
 def test_statistics_aggregation():
     CURRENT_DIR_PATH=os.path.dirname(__file__)
     TEST_FIXTURE_REL_PATH="../Sample/test_100.csv"
