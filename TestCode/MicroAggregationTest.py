@@ -26,6 +26,11 @@ class TestMicroAggregation:
         
         assert mean_value == 46
 
+    def test_max(self):
+        max_value = self._microAggregation.max('나이', currentIndex=0)
+        
+        assert max_value == 70
+
     def test_median(self):
         median_value = self._microAggregation.median('나이', currentIndex=0)
 
