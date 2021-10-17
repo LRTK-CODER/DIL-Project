@@ -1,4 +1,4 @@
 # LRTK ignore
 *.DS_Store
 *__pycache__
-/Code
+.python-version
