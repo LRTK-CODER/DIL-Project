@@ -1,5 +1,4 @@
 # LRTK ignore
 *.DS_Store
 *__pycache__
-.python-version
 .git-credentials
