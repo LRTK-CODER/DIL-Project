@@ -10,3 +10,4 @@ class Permutation(DataSetting):
         random.shuffle(datas)
         
         self.datas[column] = datas
+        return self.datas[column]
