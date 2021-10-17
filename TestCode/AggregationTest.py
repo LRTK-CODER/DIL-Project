@@ -10,7 +10,7 @@ TEST_FIXTURE_REL_PATH="../Sample/test_100.csv"
 TEST_FIXTURE_PATH=os.path.join(CURRENT_DIR_PATH, TEST_FIXTURE_REL_PATH)
 
 @pytest.fixture
-def agrregation_fixture():
+def aggregation_fixture():
     excel = pandas.read_csv(TEST_FIXTURE_PATH, index_col=0)
     dataSetting = statistics.Aggregation(excel.copy())
     
@@ -18,17 +18,17 @@ def agrregation_fixture():
 
 class TestAggregation:
     @pytest.fixture(autouse=True)
-    def _agrregationInit(self, agrregation_fixture):
-        self._agrregation = agrregation_fixture
+    def _aggregationInit(self, agrregation_fixture):
+        self._aggregation = aggregation_fixture
 
     def test_mean(self):
-        mean_value = self._agrregation.mean('나이')
+        mean_value = self._aggregation.mean('나이')
 
         for value in mean_value:
             assert value == 46
 
     def test_median(self):
-        median_value = self._agrregation.median('나이')
+        median_value = self._aggregation.median('나이')
 
         # I think 45 is median value from the fixture field '나이'
         for value in median_value:
