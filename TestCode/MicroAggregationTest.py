@@ -1,24 +1,32 @@
 import sys, os
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 
-import pandas
+import pandas, pytest
 from DIL import statistics
 
-excel = pandas.read_csv('../Sample/test_100.csv', index_col=0)
-print(excel.head())
+# 경로 설정
+CURRENT_DIR_PATH=os.path.dirname(__file__)
+TEST_FIXTURE_REL_PATH="../Sample/test_100.csv"
+TEST_FIXTURE_PATH=os.path.join(CURRENT_DIR_PATH, TEST_FIXTURE_REL_PATH)
 
-microAggregation = statistics.MicroAggregation(excel)
+@pytest.fixture
+def microAggregation_fixture():
+    excel = pandas.read_csv(TEST_FIXTURE_PATH, index_col=0)
+    dataSetting = statistics.MicroAggregation(excel)
+    
+    return dataSetting
 
-# 평균값
-# microAggregation.mean(column='나이', currentIndex=0)
+class TestMicroAggregation:
+    @pytest.fixture(autouse=True)
+    def _microAggregationInit(self, microAggregation_fixture):
+        self._microAggregation = microAggregation_fixture
 
-# 최댓값
-# microAggregation.max(column='나이', currentIndex=0)
+    def test_mean(self):
+        mean_value = self._microAggregation.mean('나이', currentIndex=0)
+        
+        assert mean_value == 46
 
-# 최솟값
-# microAggregation.min(column='나이', currentIndex=0)
+    def test_median(self):
+        median_value = self._microAggregation.median('나이', currentIndex=0)
 
-# 최빈값
-microAggregation.mode(column='나이', currentIndex=0)
-
-print(excel.head())
+        assert median_value == 45
