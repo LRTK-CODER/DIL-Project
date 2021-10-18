@@ -41,3 +41,5 @@ class Rounding:
             result.append(func(data=data, seatNum=len(str(data))-1))
 
         df.loc[:, column] = result
+
+        return df[column]
