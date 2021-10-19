@@ -28,4 +28,9 @@ jobs:
         pip install -r requirements_dev.txt
     - name: Run python test
       run: |
-        pytest TestCode/AggregationTest.py
+        pytest --cov=./ ./TestCode/AggregationTest.py
+    - name: Run Codecov
+      run: |
+        codecov
+      env: |
+        CODECOV_TOKEN='fc323d35-c499-4d5d-980c-f5db97380ae1'
