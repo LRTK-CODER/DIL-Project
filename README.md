@@ -1,4 +1,5 @@
 # De-Identification Library
+[![codecov](https://codecov.io/gh/LRTK-CODER/DIL-Project/branch/main/graph/badge.svg?token=OC4ELDAQQF)](https://codecov.io/gh/LRTK-CODER/DIL-Project)
 
 ## DIL이란?
 빅데이터, AI 등 다양한 융·복합 산업에서의 데이터 이용 수요가 급증하고 있다.<br>

@@ -28,4 +28,9 @@ jobs:
         pip install -r requirements_dev.txt
     - name: Run python test
       run: |
-        pytest TestCode/AggregationTest.py TestCode/MicroAggregationTest.py TestCode/NoiseAddTest.py TestCode/PermutationTest.py TestCode/RoundingTest.py
+        pytest --cov=./ TestCode/AggregationTest.py TestCode/MicroAggregationTest.py TestCode/NoiseAddTest.py TestCode/PermutationTest.py TestCode/RoundingTest.py
+    - name: Run Codecov
+      run: |
+        codecov
+      env:
+        token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
