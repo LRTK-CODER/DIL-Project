@@ -28,4 +28,4 @@ jobs:
         pip install -r requirements_dev.txt
     - name: Run python test
       run: |
-        pytest TestCode/AggregationTest.py TestCode/MicroAggregationTest.py TestCode/NoiseAddTest.py TestCode/PermutationTest.py Testcode/RoundingTest.py
+        pytest TestCode/AggregationTest.py TestCode/MicroAggregationTest.py TestCode/NoiseAddTest.py TestCode/PermutationTest.py TestCode/RoundingTest.py
