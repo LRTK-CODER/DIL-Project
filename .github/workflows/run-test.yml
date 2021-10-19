@@ -32,7 +32,5 @@ jobs:
     - name: Run Codecov
       run: |
         codecov
-      with:
-        token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
       env:
-        CODECOV_TOKEN: 'fc323d35-c499-4d5d-980c-f5db97380ae1'
+        token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
