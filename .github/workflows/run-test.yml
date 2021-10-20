@@ -28,7 +28,10 @@ jobs:
         pip install -r requirements_dev.txt
     - name: Run python test
       run: |
-        pytest --cov=./ TestCode/AggregationTest.py TestCode/MicroAggregationTest.py TestCode/NoiseAddTest.py TestCode/PermutationTest.py TestCode/RoundingTest.py
+        cd TestCode
+    - name: Run python test
+      run: |
+        pytest --cov=../ AggregationTest.py MicroAggregationTest.py NoiseAddTest.py PermutationTest.py RoundingTest.py
     - name: Run Codecov
       run: |
         codecov
