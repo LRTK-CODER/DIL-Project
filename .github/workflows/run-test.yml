@@ -26,7 +26,7 @@ jobs:
     - name: install dev-dependency
       run: |
         pip install -r requirements_dev.txt
-    - name: Run python test
+    - name: TestCode directory move
       run: |
         cd TestCode
     - name: Run python test
