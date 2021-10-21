@@ -1,4 +1,4 @@
-import pandas, pytest
+import pytest
 from DIL import statistics
 
 
