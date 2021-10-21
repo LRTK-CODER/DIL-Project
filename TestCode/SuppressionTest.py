@@ -24,12 +24,16 @@ class TestSuppression:
             list(self._suppression.datas)
         )
 
+    def test_partial(self):
+        targetColumn = "이름"
+        partial_scope = [1, 2]
 
-# 일반 삭제
-# suppressionTest.general(['전화번호', '주소'])
+        for value, partial_value in zip(
+            self._suppression.datas[targetColumn],
+            self._suppression.partial(targetColumn, partial_scope),
+        ):
+            assert value != partial_scope
 
-# 부분 삭제
-# suppressionTest.partial('이름', [1, 2])
 
 # 레코드 삭제
 # suppressionTest.record([0])
