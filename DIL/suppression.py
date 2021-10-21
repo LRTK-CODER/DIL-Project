@@ -71,6 +71,7 @@ class Suppression(DataSetting):
             result.append("".join(data))
 
         self.datas[column] = result
+        return self.datas[column]
 
     def address(self, column: str, mode: int = 2):
         if mode == 1:
