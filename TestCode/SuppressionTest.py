@@ -62,12 +62,16 @@ class TestSuppression:
         for value in masking_values:
             assert value.count("*") == masking_scope[1] - masking_scope[0]
 
+    def test_address_state(self):
+        original = self._suppression.datas.copy()
+        address_values = self._suppression.address("주소", 1)
 
-# 마스킹
-# suppressionTest.masking('이름', [1, 3])
+        for original_value, address_value in zip(original, address_values):
+            assert original_value != address_value
 
-# 주소 부분 삭제
-# suppressionTest.address('주소', 1)
-# suppressionTest.address("주소", 2)
+    def test_address_city(self):
+        original = self._suppression.datas.copy()
+        address_values = self._suppression.address("주소", 2)
 
-# print(excel.head())
+        for original_value, address_value in zip(original, address_values):
+            assert original_value != address_value
