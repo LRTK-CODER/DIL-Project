@@ -53,10 +53,15 @@ class TestSuppression:
 
         assert original_length - delete_count == len(record_values)
 
+    def test_masking(self):
+        targetColumn = "이름"
+        masking_scope = [1, 3]
 
-# 로컬 삭제
-# suppressionTest.local('이름', [0])
-# suppressionTest.local('이름', [0, 2])
+        masking_values = self._suppression.masking(targetColumn, masking_scope)
+
+        for value in masking_values:
+            assert value.count("*") == masking_scope[1] - masking_scope[0]
+
 
 # 마스킹
 # suppressionTest.masking('이름', [1, 3])
