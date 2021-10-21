@@ -24,6 +24,6 @@ class TestPermutation:
 
     def test_all(self):
         permutation_value = self._permutation.all("나이")
-        excel = pandas.read_csv("../Sample/test_100.csv", index_col=0)
+        excel = pandas.read_csv("./Sample/test_100.csv", index_col=0)
 
         assert not permutation_value.equals(excel["나이"])
