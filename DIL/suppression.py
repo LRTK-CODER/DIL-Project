@@ -46,6 +46,7 @@ class Suppression(DataSetting):
 
     def record(self, currentIndexList: list) -> None:
         self.datas.drop(currentIndexList, axis=0, inplace=True)
+        return self.datas
 
     def local(self, column: str, currentIndexList: list) -> None:
         datas = self._toList(column)
