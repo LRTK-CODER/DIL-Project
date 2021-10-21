@@ -1,13 +1,29 @@
-import sys, os
-sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
-
-import pandas
+import pandas, pytest
 from DIL import Suppression
 
-excel = pandas.read_csv('../Sample/test_100.csv', index_col=0)
-print(excel.head())
 
-suppressionTest = Suppression(excel)
+@pytest.fixture
+def suppression_fixture(datas_fixture):
+    dataSetting = Suppression(datas_fixture.copy())
+
+    return dataSetting
+
+
+class TestSuppression:
+    @pytest.fixture(autouse=True)
+    def _suppressionInit(self, suppression_fixture):
+        self._suppression = suppression_fixture
+
+    def test_general(self):
+        origeralColumn = list(self._suppression.datas)
+        currentColumn = ["전화번호", "주소"]
+
+        self._suppression.general(["전화번호", "주소"])
+
+        assert sorted(list(set(origeralColumn) - set(currentColumn))) == sorted(
+            list(self._suppression.datas)
+        )
+
 
 # 일반 삭제
 # suppressionTest.general(['전화번호', '주소'])
@@ -28,6 +44,6 @@ suppressionTest = Suppression(excel)
 
 # 주소 부분 삭제
 # suppressionTest.address('주소', 1)
-suppressionTest.address('주소', 2)
+# suppressionTest.address("주소", 2)
 
-print(excel.head())
+# print(excel.head())
