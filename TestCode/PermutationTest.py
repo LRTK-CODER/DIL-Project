@@ -7,9 +7,8 @@ from DIL import randomization
 
 
 @pytest.fixture
-def permutation_fixture(path_fixture):
-    excel = pandas.read_csv(path_fixture, index_col=0)
-    dataSetting = randomization.Permutation(excel.copy())
+def permutation_fixture(datas_fixture):
+    dataSetting = randomization.Permutation(datas_fixture.copy())
 
     return dataSetting
 

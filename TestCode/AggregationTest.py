@@ -1,15 +1,10 @@
-import sys, os
-
-sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
-
 import pandas, pytest
 from DIL import statistics
 
 
 @pytest.fixture
-def aggregation_fixture(path_fixture):
-    excel = pandas.read_csv(path_fixture, index_col=0)
-    dataSetting = statistics.Aggregation(excel.copy())
+def aggregation_fixture(datas_fixture):
+    dataSetting = statistics.Aggregation(datas_fixture.copy())
 
     return dataSetting
 
