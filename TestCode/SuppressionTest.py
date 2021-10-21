@@ -26,18 +26,33 @@ class TestSuppression:
 
     def test_partial(self):
         targetColumn = "이름"
-        partial_scope = [1, 2]
+        original = self._suppression.datas[targetColumn].copy()
 
-        for value, partial_value in zip(
-            self._suppression.datas[targetColumn],
-            self._suppression.partial(targetColumn, partial_scope),
+        for original_value, partial_value in zip(
+            original,
+            self._suppression.partial(targetColumn, [1, 2]),
         ):
-            assert value != partial_scope
+            assert original_value != partial_value
 
+    @pytest.mark.parametrize(
+        "currentIndexList",
+        [
+            ([0]),
+            ([0, 2]),
+            ([2, 6, 8]),
+            ([10, 39, 70, 80]),
+            ([10, 2, 70, 80, 99]),
+            ([1, 0, 3, 10, 25, 56, 43]),
+        ],
+    )
+    def test_record(self, currentIndexList):
+        original_length = len(self._suppression.datas)
+        delete_count = len(currentIndexList)
 
-# 레코드 삭제
-# suppressionTest.record([0])
-# suppressionTest.record([0, 2])
+        record_values = self._suppression.record(currentIndexList)
+
+        assert original_length - delete_count == len(record_values)
+
 
 # 로컬 삭제
 # suppressionTest.local('이름', [0])
