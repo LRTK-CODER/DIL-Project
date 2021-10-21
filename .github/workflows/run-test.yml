@@ -26,12 +26,9 @@ jobs:
     - name: install dev-dependency
       run: |
         pip install -r requirements_dev.txt
-    - name: TestCode directory move
-      run: |
-        cd TestCode
     - name: Run python test
       run: |
-        pytest --cov=../ AggregationTest.py MicroAggregationTest.py NoiseAddTest.py PermutationTest.py RoundingTest.py
+        pytest --cov=../ ./TestCode/AggregationTest.py ./TestCode/MicroAggregationTest.py ./TestCode/NoiseAddTest.py ./TestCode/PermutationTest.py ./TestCode/RoundingTest.py
     - name: Run Codecov
       run: |
         codecov
