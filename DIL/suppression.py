@@ -79,6 +79,8 @@ class Suppression(DataSetting):
         else:
             self.__cityRearDel(column)
 
+        return self.datas[column]
+
     def __stateRearDel(self, column: str):
         datas = self._toList(column)
 
