@@ -1,8 +1,4 @@
-import sys, os
-
-sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
-
-import pandas, pytest
+import pytest
 from DIL import Rounding
 
 
@@ -56,9 +52,8 @@ class TestRound:
 
         assert rounding_down_value == result
 
-    def test_random(self, path_fixture):
-        excel = pandas.read_csv(path_fixture, index_col=0)
-        datas = Rounding.random(excel, "나이")
+    def test_random(self, datas_fixture):
+        datas = Rounding.random(datas_fixture, "나이")
 
         for data in datas:
             assert str(data)[-1] == "0"
