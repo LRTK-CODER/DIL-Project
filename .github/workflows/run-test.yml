@@ -29,13 +29,12 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: ${{ matrix.python-version }}
+        token: ${{ secrets.GITHUB_TOKEN }}
     
     - name: install dependency & dev-dependency
       run: |
         pip install -r requirements.txt
         pip install -r requirements_dev.txt
-      env:
-        token: ${{ secrets.GITHUB_TOKEN }}
     
     - name: pytest run
       run: pytest --cov=../ ./TestCode/
