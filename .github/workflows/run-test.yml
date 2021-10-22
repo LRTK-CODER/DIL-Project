@@ -29,7 +29,7 @@ jobs:
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         python-version: ${{ matrix.python-version }}
-        codecov_token: ${{ secrets.CODECOV_TOKEN }}
+        # codecov_token: ${{ secrets.CODECOV_TOKEN }}
       run: |
         # install dependency
         pip install -r requirements.txt
@@ -38,10 +38,10 @@ jobs:
         pip install -r requirements_dev.txt
 
         # Run python test
-        pytest --cov=../ ./TestCode/
+        # pytest --cov=../ ./TestCode/
 
         # Run Codecov
-        codecov
+        # codecov
 
 
     # - name: Set up Python ${{ matrix.python-version }}
