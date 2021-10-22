@@ -16,47 +16,42 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    # - name: Check files using the black formatter
-    #     uses: rickstaa/action-black@v1
-    #     id: action_black
-    #     env:
-    #       black_args: ". --check"
 
-      
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: install dependency & dev-dependency
+      run: |
+        pip install -r requirements.txt
+        pip install -r requirements_dev.txt
+
     - name: pytest run
-      # if: steps.action_black.outputs.is_formatted == 'true'
       uses: peter-evans/create-pull-request@v3
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        python-version: ${{ matrix.python-version }}
-        # codecov_token: ${{ secrets.CODECOV_TOKEN }}
       run: |
-        # install dependency
-        pip install -r requirements.txt
-
-        # install dev-dependency
-        pip install -r requirements_dev.txt
-
-        # Run python test
-        # pytest --cov=../ ./TestCode/
-
-        # Run Codecov
-        # codecov
+        pytest --cov=../ ./TestCode/
 
 
     # - name: Set up Python ${{ matrix.python-version }}
     #   uses: actions/setup-python@v2
     #   with:
     #     python-version: ${{ matrix.python-version }}
+
     # - name: install dependency
     #   run: |
     #     pip install -r requirements.txt
+    
     # - name: install dev-dependency
     #   run: |
     #     pip install -r requirements_dev.txt
+    
     # - name: Run python test
     #   run: |
     #     pytest --cov=../ ./TestCode/
+    
     # - name: Run Codecov
     #   run: |
     #     codecov
