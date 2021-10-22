@@ -22,7 +22,7 @@ jobs:
       uses: rickstaa/action-black@v1
       id: action_black
       with:
-        black_args: "."
+        black_args: ". --check"
     
     - name: Set up Python ${{ matrix.python-version }}
       if: steps.action_black.outputs.is_formatted == 'true'
@@ -31,10 +31,10 @@ jobs:
         python-version: ${{ matrix.python-version }}
     
     - name: install dependency & dev-dependency
-      env: token: ${{ secrets.GITHUB_TOKEN }}
       run: |
         pip install -r requirements.txt
         pip install -r requirements_dev.txt
+      env: token: ${{ secrets.GITHUB_TOKEN }}
     
     - name: pytest run
       run: pytest --cov=../ ./TestCode/
