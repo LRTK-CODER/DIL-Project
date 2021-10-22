@@ -50,8 +50,14 @@ class TestGeneralization:
         for value in local_values[targetColumn][local_scope[1] + 1 :]:
             assert value != "남성 ~ 여성"
 
+    def test_categorizion(self):
+        targetColumn = "성별"
+        category = "Gender"
 
-# 문자데이터 범주화
-# genTest.categorizion(column="성별", replaceList=["남성", "여성"], category="Gender")
+        self._eneralization.categorizion(
+            column=targetColumn, replaceList=["남성", "여성"], category=category
+        )
 
-# print(excel.head())
+        categorizion_values = self._eneralization.datas
+        for value in categorizion_values[targetColumn]:
+            assert value == category
