@@ -30,7 +30,11 @@ jobs:
     - name: pytest run
       run: |
         pytest --cov=../ ./TestCode/
-
+    - name: Run Codecov
+          run: |
+            codecov
+          env:
+            token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
 
     # - name: Set up Python ${{ matrix.python-version }}
     #   uses: actions/setup-python@v2
