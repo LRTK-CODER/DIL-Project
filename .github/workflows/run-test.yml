@@ -15,7 +15,8 @@ jobs:
         python-version: [3.9]
 
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout source code
+      uses: actions/checkout@v2
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
     - name: Set up Python ${{ matrix.python-version }}
