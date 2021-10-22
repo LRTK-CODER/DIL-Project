@@ -3,4 +3,4 @@ from .OPE import OPECipher
 from .FPE import FPECipher
 from .hash import __init__
 
-__all__ = ['AES256', 'hash', 'OPECipher']
+__all__ = ["AES256", "hash", "OPECipher"]

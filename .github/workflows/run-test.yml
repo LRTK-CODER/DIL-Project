@@ -8,29 +8,58 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     strategy:
       matrix:
         python-version: [3.9]
 
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout source code
+      uses: actions/checkout@v2
+      
+    - name: black --check
+      uses: rickstaa/action-black@v1
+      id: action_black
+      with:
+        black_args: ". --check"
+    
     - name: Set up Python ${{ matrix.python-version }}
+      if: steps.action_black.outputs.is_formatted == 'true'
       uses: actions/setup-python@v2
       with:
         python-version: ${{ matrix.python-version }}
-    - name: install dependency
+        token: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: install dependency & dev-dependency
       run: |
         pip install -r requirements.txt
-    - name: install dev-dependency
-      run: |
         pip install -r requirements_dev.txt
-    - name: Run python test
-      run: |
-        pytest --cov=../ ./TestCode/
+    
+    - name: pytest run
+      run: pytest --cov=../ ./TestCode/
+    
     - name: Run Codecov
-      run: |
-        codecov
-      env:
-        token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
+      run: codecov
+
+    # - name: Set up Python ${{ matrix.python-version }}
+    #   uses: actions/setup-python@v2
+    #   with:
+    #     python-version: ${{ matrix.python-version }}
+
+    # - name: install dependency
+    #   run: |
+    #     pip install -r requirements.txt
+    
+    # - name: install dev-dependency
+    #   run: |
+    #     pip install -r requirements_dev.txt
+    
+    # - name: Run python test
+    #   run: |
+    #     pytest --cov=../ ./TestCode/
+    
+    # - name: Run Codecov
+    #   run: |
+    #     codecov
+    #   env:
+    #     token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
