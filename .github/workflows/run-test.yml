@@ -34,7 +34,8 @@ jobs:
       run: |
         pip install -r requirements.txt
         pip install -r requirements_dev.txt
-      env: token: ${{ secrets.GITHUB_TOKEN }}
+      env:
+        token: ${{ secrets.GITHUB_TOKEN }}
     
     - name: pytest run
       run: pytest --cov=../ ./TestCode/
