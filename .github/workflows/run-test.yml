@@ -17,10 +17,15 @@ jobs:
     steps:
     - name: Checkout source code
       uses: actions/checkout@v2
+      
+    - name: black --check
+      uses: rickstaa/action-black@v1
+      id: action_black
       with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+        black_args: ". --check"
     
     - name: Set up Python ${{ matrix.python-version }}
+      if: steps.action_black.outputs.is_formatted == 'true'
       uses: actions/setup-python@v2
       with:
         python-version: ${{ matrix.python-version }}
