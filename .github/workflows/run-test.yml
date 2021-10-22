@@ -26,7 +26,7 @@ jobs:
     - name: pytest run
       # if: steps.action_black.outputs.is_formatted == 'true'
       uses: peter-evans/create-pull-request@v3
-      env:
+      with:
         token: ${{ secrets.GITHUB_TOKEN }}
         python-version: ${{ matrix.python-version }}
         token: ${{ secrets.CODECOV_TOKEN }}
