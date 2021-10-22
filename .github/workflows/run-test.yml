@@ -8,7 +8,6 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -23,13 +22,13 @@ jobs:
       id: action_black
       with:
         black_args: ". --check"
+        token: ${{ secrets.GITHUB_TOKEN }}
     
     - name: Set up Python ${{ matrix.python-version }}
       if: steps.action_black.outputs.is_formatted == 'true'
       uses: actions/setup-python@v2
       with:
         python-version: ${{ matrix.python-version }}
-        token: ${{ secrets.GITHUB_TOKEN }}
     
     - name: install dependency & dev-dependency
       run: |
