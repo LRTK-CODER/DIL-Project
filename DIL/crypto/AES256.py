@@ -3,8 +3,8 @@ import sys, os
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 
 import pandas, hashlib, base64
-from Cryptodome import Random
-from Cryptodome.Cipher import AES
+from Crypto import Random
+from Crypto.Cipher import AES
 
 from util import DataSetting
 
