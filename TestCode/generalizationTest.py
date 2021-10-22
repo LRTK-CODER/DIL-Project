@@ -3,7 +3,7 @@ from DIL import Generalization
 
 
 @pytest.fixture
-def eneralization_fixture(datas_fixture):
+def generalization_fixture(datas_fixture):
     dataSetting = Generalization(datas_fixture.copy())
 
     return dataSetting
@@ -11,8 +11,8 @@ def eneralization_fixture(datas_fixture):
 
 class TestGeneralization:
     @pytest.fixture(autouse=True)
-    def _generalizationInit(self, eneralization_fixture):
-        self._eneralization = eneralization_fixture
+    def _generalizationInit(self, generalization_fixture):
+        self._generalization = generalization_fixture
 
     @pytest.mark.parametrize(
         "local_scope",
@@ -26,9 +26,9 @@ class TestGeneralization:
     )
     def test_local_target(self, local_scope):
         targetColumn = "성별"
-        self._eneralization.local(column=targetColumn, currentIndexList=local_scope)
+        self._generalization.local(column=targetColumn, currentIndexList=local_scope)
 
-        local_values = self._eneralization.datas
+        local_values = self._generalization.datas
         for value in local_values[targetColumn][local_scope[0] : local_scope[1] + 1]:
             assert value == "남성 ~ 여성"
 
@@ -44,9 +44,9 @@ class TestGeneralization:
     )
     def test_local_non_target(self, local_scope):
         targetColumn = "성별"
-        self._eneralization.local(column=targetColumn, currentIndexList=local_scope)
+        self._generalization.local(column=targetColumn, currentIndexList=local_scope)
 
-        local_values = self._eneralization.datas
+        local_values = self._generalization.datas
         for value in local_values[targetColumn][local_scope[1] + 1 :]:
             assert value != "남성 ~ 여성"
 
@@ -54,10 +54,10 @@ class TestGeneralization:
         targetColumn = "성별"
         category = "Gender"
 
-        self._eneralization.categorizion(
+        self._generalization.categorizion(
             column=targetColumn, replaceList=["남성", "여성"], category=category
         )
 
-        categorizion_values = self._eneralization.datas
+        categorizion_values = self._generalization.datas
         for value in categorizion_values[targetColumn]:
             assert value == category
