@@ -34,4 +34,4 @@ class TestAES256:
         # AES-256 복호화
         self._aes.decrypt("전화번호")
         decrypt_values = self._aes.datas["전화번호"]
-        assert self._aes.datas["전화번호"].equals(original[targetColumn])
+        assert decrypt_values.equals(original[targetColumn])
