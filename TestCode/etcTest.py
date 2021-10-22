@@ -1,18 +1,40 @@
 import sys, os
+
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 
-import pandas
+import pandas, pytest
 from DIL import Etc
 
-excel = pandas.read_csv('../Sample/test_100.csv', index_col=0)
-print(excel.head())
 
-etcTest = Etc(excel)
+@pytest.fixture
+def etc_fixture(datas_fixture):
+    dataSetting = Etc(datas_fixture.copy())
 
-# 샘플링
-# sample = etcTest.sampling(10)
-# print(sample)
+    return dataSetting
 
-identy, nonIdenty = etcTest.anatomization(identyColumn='회원번호', currentColumnList=['이름', '성별', '주소'])
-print(identy.head())
-print(nonIdenty.head())
+
+class TestEtc:
+    @pytest.fixture(autouse=True)
+    def _etcInit(self, etc_fixture):
+        self._etc = etc_fixture
+
+    @pytest.mark.parametrize(
+        "length",
+        [10, 20, 11, 15, 1, 2],
+    )
+    def test_sampling(self, length):
+        assert (len(self._etc.datas) // length) == len(self._etc.sampling(length))
+
+    def test_anatomization(self):
+        identyColumn = "회원번호"
+        identyColumnList = ["이름", "성별", "주소"]
+
+        identy, nonIdenty = self._etc.anatomization(
+            identyColumn="회원번호", currentColumnList=["이름", "성별", "주소"]
+        )
+
+        checkNonIdentyColumnList = set(self._etc.datas)
+
+        assert sorted(list(nonIdenty)) == sorted(
+            list(checkNonIdentyColumnList - set(identyColumnList))
+        )
