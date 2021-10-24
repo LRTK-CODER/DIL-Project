@@ -53,6 +53,22 @@ class TestSuppression:
 
         assert original_length - delete_count == len(record_values)
 
+    @pytest.mark.parametrize(
+        "column, currentIndexList",
+        [
+            ("이름", [0]),
+            ("회원번호", [0, 2]),
+            ("나이", [2, 6, 8]),
+            ("생일", [10, 39, 70, 80]),
+            ("전화번호", [10, 2, 70, 80, 99]),
+            ("주소", [1, 0, 3, 10, 25, 56, 43]),
+        ],
+    )
+    def test_local(self, column, currentIndexList):
+        self._suppression.local(column, currentIndexList)
+        for idx in currentIndexList:
+            assert self._suppression.datas[column][idx] == ""
+
     def test_masking(self):
         targetColumn = "이름"
         masking_scope = [1, 3]
