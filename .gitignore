@@ -1,4 +1,10 @@
-# LRTK ignore
 *.DS_Store
 *__pycache__
 .git-credentials
+
+# setup.py working directory
+build
+# setup.py dist directory
+dist
+# Egg metadata
+*.egg-info
