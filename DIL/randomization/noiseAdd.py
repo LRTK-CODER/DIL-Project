@@ -1,3 +1,7 @@
+import sys, os
+
+sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
+
 import random
 from util import DataSetting
 
@@ -7,9 +11,6 @@ class Noise(DataSetting):
     | 무작위화 기술 중 잡음추가 기술을 구현한 클래스
     | 모든 메소드는 생성자에 원본 데이터를 인자 값으로 넣으면 원본 데이터를 수정한다.
     """
-
-    def init(self, datas):
-        super().init(datas)
 
     def add(self, column: str, randomRange: list = [-9, 9]):
         """
@@ -27,7 +28,7 @@ class Noise(DataSetting):
         True
             기술 적용 성공 시 True 리턴
         """
-        datas = self.toList(column)
+        datas = self._toList(column)
         result = [
             data + random.randrange(randomRange[0], randomRange[1]) for data in datas
         ]

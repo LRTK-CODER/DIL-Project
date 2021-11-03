@@ -53,7 +53,8 @@ class TestRound:
         assert rounding_down_value == result
 
     def test_random(self, datas_fixture):
-        datas = Rounding.random(datas_fixture, "나이")
+        Rounding.random(datas_fixture, "나이")
+        datas = datas_fixture["나이"]
 
         for data in datas:
             assert str(data)[-1] == "0"

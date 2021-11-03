@@ -21,17 +21,20 @@ class TestNoise:
         "column, randomRange",
         [
             ("나이", [-9, 9]),
-            ("나이", [-8, 9]),
-            ("나이", [-8, 8]),
-            ("나이", [-7, 8]),
+            # ("나이", [-8, 9]),
+            # ("나이", [-8, 8]),
+            # ("나이", [-7, 8]),
         ],
     )
     def test_add(self, column, randomRange):
-        noiseAdd_Value = self._noise.add(column, randomRange)
-        assert not noiseAdd_Value.equals(noise_fixture)
+        original = self._noise.datas[column].copy()
+
+        self._noise.add(column, randomRange)
+        noiseAdd_Value = self._noise.datas[column]
+        assert not noiseAdd_Value.equals(original)
 
     @pytest.mark.parametrize(
-        "column, randomRange",
+        "columns, randomRange",
         [
             (["회원번호", "나이"], [-9, 9]),
             (["회원번호", "나이"], [-8, 9]),
@@ -39,6 +42,10 @@ class TestNoise:
             (["회원번호", "나이"], [-7, 8]),
         ],
     )
-    def test_mulipleAdd(self, column, randomRange):
-        noiseAdd_Value = self._noise.multipleAdd(column, randomRange)
-        assert not noiseAdd_Value.equals(noise_fixture)
+    def test_mulipleAdd(self, columns, randomRange):
+        original = self._noise.datas[columns].copy()
+
+        self._noise.multipleAdd(columns, randomRange)
+        noiseAdd_Value = self._noise.datas[columns]
+
+        assert not noiseAdd_Value.equals(original)
