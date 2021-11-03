@@ -1,17 +1,27 @@
-import sys, os
-
-sys.path.append(
-    os.path.dirname(
-        os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir))
-    )
-)
-
 import pandas, hashlib
 from util import DataSetting
 
 
 class SHA256(DataSetting):
+    """
+    | 암호화 기술 중 단방향 암호화(SHA-256)를 구현한 클래스
+    | 모든 메소드는 생성자에 원본 데이터를 인자 값으로 넣으면 원본 데이터를 수정한다.
+    """
+
     def run(self, column: str):
+        """
+        SHA-256 암호화를 수행하는 메소드
+
+        Parameters
+        ----------
+        column : str
+            SHA-256 암호화를 적용할 컬럼
+
+        Returns
+        -------
+        True
+            기술 적용 성공 시 True 리턴
+        """
         datas = self._toList(column)
 
         result = []
@@ -23,11 +33,4 @@ class SHA256(DataSetting):
 
         self.datas.loc[:, column] = result
 
-
-if __name__ == "__main__":
-    excel = pandas.read_csv("../Sample/test_100.csv", index_col=0)
-    print(excel.head())
-
-    hash = SHA256(excel)
-    hash.run("이름")
-    print(excel.head())
+        return True

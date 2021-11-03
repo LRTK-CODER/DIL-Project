@@ -1,7 +1,3 @@
-import sys, os
-
-sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
-
 import pandas, hashlib, base64
 from Crypto import Random
 from Crypto.Cipher import AES
@@ -12,6 +8,11 @@ DataFrame = pandas.DataFrame
 
 
 class AES256(DataSetting):
+    """
+    | 암호화 기술 중 양방향 암호화(AES-256)를 구현한 클래스
+    | 모든 메소드는 생성자에 원본 데이터를 인자 값으로 넣으면 원본 데이터를 수정한다.
+    """
+
     def __init__(self, datas: DataFrame, key):
         self.datas = datas
 
@@ -19,6 +20,19 @@ class AES256(DataSetting):
         self.key = hashlib.sha256(key.encode("utf-8")).digest()
 
     def encrypt(self, column: str):
+        """
+        AES-256 암호화를 수행하는 메소드
+
+        Parameters
+        ----------
+        column : str
+            AES-256 암호화를 적용할 컬럼
+
+        Returns
+        -------
+        True
+            기술 적용 성공 시 True 리턴
+        """
         datas = self._toList(column)
 
         result = []
@@ -32,7 +46,22 @@ class AES256(DataSetting):
 
         self.datas.loc[:, column] = result
 
+        return True
+
     def decrypt(self, column: str):
+        """
+        AES-256 복호화를 수행하는 메소드
+
+        Parameters
+        ----------
+        column : str
+            AES-256 복호화를 적용할 컬럼
+
+        Returns
+        -------
+        True
+            기술 적용 성공 시 True 리턴
+        """
         datas = self._toList(column)
 
         result = []
@@ -48,6 +77,8 @@ class AES256(DataSetting):
 
         self.datas.loc[:, column] = result
 
+        return True
+
     def _pad(self, s):
         return s + (self.bs - len(s.encode("utf-8")) % self.bs) * chr(
             self.bs - len(s.encode("utf-8")) % self.bs
@@ -56,14 +87,3 @@ class AES256(DataSetting):
     @staticmethod
     def _unpad(s):
         return s[: -s[-1]]
-
-
-if __name__ == "__main__":
-    excel = pandas.read_csv("../Sample/test_100.csv", index_col=0)
-    print(excel.head())
-
-    AES256(excel, "test").encrypt("이름")
-    print(excel.head())
-
-    AES256(excel, "test").decrypt("이름")
-    print(excel.head())
