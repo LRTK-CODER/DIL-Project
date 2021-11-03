@@ -28,10 +28,10 @@ class TestSuppression:
         targetColumn = "이름"
         original = self._suppression.datas[targetColumn].copy()
 
-        for original_value, partial_value in zip(
-            original,
-            self._suppression.partial(targetColumn, [1, 2]),
-        ):
+        self._suppression.partial(targetColumn, [1, 2])
+        partial = self._suppression.datas[targetColumn]
+
+        for original_value, partial_value in zip(original, partial):
             assert original_value != partial_value
 
     @pytest.mark.parametrize(
@@ -49,7 +49,8 @@ class TestSuppression:
         original_length = len(self._suppression.datas)
         delete_count = len(currentIndexList)
 
-        record_values = self._suppression.record(currentIndexList)
+        self._suppression.record(currentIndexList)
+        record_values = self._suppression.datas
 
         assert original_length - delete_count == len(record_values)
 
@@ -73,21 +74,26 @@ class TestSuppression:
         targetColumn = "이름"
         masking_scope = [1, 3]
 
-        masking_values = self._suppression.masking(targetColumn, masking_scope)
+        self._suppression.masking(targetColumn, masking_scope)
+        masking_values = self._suppression.datas[targetColumn]
 
         for value in masking_values:
             assert value.count("*") == masking_scope[1] - masking_scope[0]
 
     def test_address_state(self):
         original = self._suppression.datas.copy()
-        address_values = self._suppression.address("주소", 1)
+
+        self._suppression.address("주소", 1)
+        address_values = self._suppression.datas["주소"]
 
         for original_value, address_value in zip(original, address_values):
             assert original_value != address_value
 
     def test_address_city(self):
         original = self._suppression.datas.copy()
-        address_values = self._suppression.address("주소", 2)
+
+        self._suppression.address("주소", 2)
+        address_values = self._suppression.datas["주소"]
 
         for original_value, address_value in zip(original, address_values):
             assert original_value != address_value
