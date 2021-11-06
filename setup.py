@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="DIL",
-    version="0.0.2",
+    version="0.0.3",
     author="DIL-Project",
     author_email="lrtk@kakao.com",
     description="가명처리 기술을 손 쉽게 사용할 수 있는 라이브러리",
