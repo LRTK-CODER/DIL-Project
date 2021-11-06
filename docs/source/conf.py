@@ -10,9 +10,10 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-# import os
-# import sys
-# sys.path.insert(0, os.path.abspath('.'))
+import os
+import sys
+
+sys.path.insert(0, os.path.abspath("../../"))
 
 
 # -- Project information -----------------------------------------------------
@@ -22,7 +23,7 @@ copyright = "2021, DIL-Project"
 author = "DIL-Project"
 
 # The full version, including alpha/beta/rc tags
-release = "0.0.2"
+release = "0.0.3"
 
 
 # -- General configuration ---------------------------------------------------
@@ -32,6 +33,7 @@ release = "0.0.2"
 # ones.
 extensions = [
     "sphinx.ext.autodoc",
+    "sphinxcontrib.napoleon",
 ]
 
 # Add any paths that contain templates here, relative to this directory.
