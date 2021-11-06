@@ -4,8 +4,8 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="DIL",  # Replace with your own username
-    version="0.0.1",
+    name="DIL",
+    version="0.0.2",
     author="DIL-Project",
     author_email="lrtk@kakao.com",
     description="가명처리 기술을 손 쉽게 사용할 수 있는 라이브러리",
