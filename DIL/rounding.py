@@ -13,17 +13,12 @@ class Rounding:
         """
         라운딩 기술 중 반올림을 수행하는 메소드
 
-        Parameters
-        ----------
-            - data : int
-                반올림을 수행할 숫자형 타입 데이터
-            - seatNum : int
-                반올림을 수행할 숫자형 타입 데이터의 자리수 위치
+        Args:
+            data (int) : 반올림을 수행할 숫자형 타입 데이터
+            seatNum (int) : 반올림을 수행할 숫자형 타입 데이터의 자리수 위치
 
-        Returns
-        -------
-            - int type data
-                반올림이 적용된 숫자형 타입 데이터를 리턴
+        Returns:
+            int : 반올림이 적용된 숫자형 타입 데이터를 리턴
         """
         data = list(str(data))
         if int(data[-seatNum]) >= 5:
@@ -39,17 +34,12 @@ class Rounding:
         """
         라운딩 기술 중 올림을 수행하는 메소드
 
-        Parameters
-        ----------
-            - data : int
-                올림을 수행할 숫자형 타입 데이터
-            - seatNum : int
-                올림을 수행할 숫자형 타입 데이터의 자리수 위치
+        Args:
+            data (int) : 올림을 수행할 숫자형 타입 데이터
+            seatNum (int) : 올림을 수행할 숫자형 타입 데이터의 자리수 위치
 
-        Returns
-        -------
-            - int type data
-                올림이 적용된 숫자형 타입 데이터를 리턴
+        Returns:
+            int : 올림이 적용된 숫자형 타입 데이터를 리턴
         """
         data = list(str(data))
         if int(data[-seatNum]) or len(set(data[-seatNum:])) > 1:
@@ -63,17 +53,12 @@ class Rounding:
         """
         라운딩 기술 중 내림을 수행하는 메소드
 
-        Parameters
-        ----------
-            - data : int
-                내림을 수행할 숫자형 타입 데이터
-            - seatNum : int
-                내림을 수행할 숫자형 타입 데이터의 자리수 위치
+        Args:
+            data (int) : 내림을 수행할 숫자형 타입 데이터
+            seatNum (int) : 내림을 수행할 숫자형 타입 데이터의 자리수 위치
 
-        Returns
-        -------
-            - int type data
-                내림이 적용된 숫자형 타입 데이터를 리턴
+        Returns:
+            int : 내림이 적용된 숫자형 타입 데이터를 리턴
         """
         data = list(str(data))
         if int(data[-seatNum]) or len(set(data[-seatNum:])) > 1:
@@ -86,17 +71,12 @@ class Rounding:
         """
         라운딩 기술 중 무작위로 수행하는 메소드
 
-        Parameters
-        ----------
-            - data : int
-                무작위로 수행할 숫자형 타입 데이터
-            - seatNum : int
-                무작위로 수행할 숫자형 타입 데이터의 자리수 위치
+        Args:
+            data (int) : 무작위로 수행할 숫자형 타입 데이터
+            seatNum (int) : 무작위로 수행할 숫자형 타입 데이터의 자리수 위치
 
-        Returns
-        -------
-            - True
-                기술 적용 성공 시 True 리턴
+        Returns:
+            bool : 기술 적용 성공 시 True 리턴
         """
         datas = df.loc[:, column]
 
