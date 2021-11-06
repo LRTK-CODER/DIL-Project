@@ -11,6 +11,7 @@ API Reference
 
 .. toctree::
    api/suppression
+   api/generalization
 
 ------------------
 Indices and tables
