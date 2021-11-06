@@ -18,7 +18,8 @@ class TestPermutation:
         assert type(self._permutation.datas) is pandas.DataFrame
 
     def test_all(self):
-        permutation_value = self._permutation.all("나이")
+        self._permutation.all("나이")
+        permutation_value = self._permutation.datas["나이"]
         excel = pandas.read_csv("./Sample/test_100.csv", index_col=0)
 
         assert not permutation_value.equals(excel["나이"])
