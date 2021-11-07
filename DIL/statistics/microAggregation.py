@@ -10,27 +10,20 @@ class MicroAggregation(DataSetting):
     | 통계 기술 중 부분 총계 기술(평균값, 최댓값, 최솟값, 최빈값, 중간값)을 구현한 클래스
     | 모든 메소드는 생성자에 원본 데이터를 인자 값으로 넣으면 원본 데이터를 수정한다.
 
-    Parameters
-    ----------
-        - datas : pandas.DataFrame
-            부분 총계 기술을 적용할 DataFrame 지정
+    Args:
+        datas (pandas.DataFrame) : 부분 총계 기술을 적용할 DataFrame 지정
     """
 
     def mean(self, column: str, currentIndex: int):
         """
         부분 총계 기술의 평균값을 구현한 메소드
 
-        Parameters
-        ----------
-            - column : str
-                부분 총계 기술의 평균값을 적용할 컬럼
-            - currentIndex : int
-                부분 총계 기술의 평균값을 적용할 Index
+        Args:
+            column (str) : 부분 총계 기술의 평균값을 적용할 컬럼
+            currentIndex (int) : 부분 총계 기술의 평균값을 적용할 Index
 
-        Returns
-        -------
-            - True
-                기술 적용 성공 시 True 리턴
+        Returns:
+            bool : 기술 적용 성공 시 True 리턴
         """
         meanValue = int(self.datas[column].mean())
         self.datas.at[currentIndex, column] = meanValue
@@ -41,17 +34,12 @@ class MicroAggregation(DataSetting):
         """
         부분 총계 기술의 최댓값을 구현한 메소드
 
-        Parameters
-        ----------
-            - column : str
-                부분 총계 기술의 최댓값을 적용할 컬럼
-            - currentIndex : int
-                부분 총계 기술의 최댓값을 적용할 Index
+        Args:
+            column (str) : 부분 총계 기술의 최댓값을 적용할 컬럼
+            currentIndex (int) : 부분 총계 기술의 최댓값을 적용할 Index
 
-        Returns
-        -------
-            - True
-                기술 적용 성공 시 True 리턴
+        Returns:
+            bool : 기술 적용 성공 시 True 리턴
         """
         maxValue = self.datas[column].max()
         self.datas.at[currentIndex, column] = maxValue
@@ -62,17 +50,12 @@ class MicroAggregation(DataSetting):
         """
         부분 총계 기술의 최솟값을 구현한 메소드
 
-        Parameters
-        ----------
-            - column : str
-                부분 총계 기술의 최솟값을 적용할 컬럼
-            - currentIndex : int
-                부분 총계 기술의 최솟값을 적용할 Index
+        Args:
+            column (str) : 부분 총계 기술의 최솟값을 적용할 컬럼
+            currentIndex (int) : 부분 총계 기술의 최솟값을 적용할 Index
 
-        Returns
-        -------
-            - True
-                기술 적용 성공 시 True 리턴
+        Returns:
+            bool : 기술 적용 성공 시 True 리턴
         """
         minValue = self.datas[column].min()
         self.datas.at[currentIndex, column] = minValue
@@ -83,17 +66,12 @@ class MicroAggregation(DataSetting):
         """
         부분 총계 기술의 최빈값을 구현한 메소드
 
-        Parameters
-        ----------
-            - column : str
-                부분 총계 기술의 최빈값을 적용할 컬럼
-            - currentIndex : int
-                부분 총계 기술의 최빈값을 적용할 Index
+        Args:
+            column (str) : 부분 총계 기술의 최빈값을 적용할 컬럼
+            currentIndex (int) : 부분 총계 기술의 최빈값을 적용할 Index
 
-        Returns
-        -------
-            - True
-                기술 적용 성공 시 True 리턴
+        Returns:
+            bool : 기술 적용 성공 시 True 리턴
         """
         modeValue = list(self.datas[column].mode())[-1]
         self.datas.at[currentIndex, column] = modeValue
@@ -104,17 +82,12 @@ class MicroAggregation(DataSetting):
         """
         부분 총계 기술의 중간값을 구현한 메소드
 
-        Parameters
-        ----------
-            - column : str
-                부분 총계 기술의 중간값을 적용할 컬럼
-            - currentIndex : int
-                부분 총계 기술의 중간값을 적용할 Index
+        Args:
+            column (str) : 부분 총계 기술의 중간값을 적용할 컬럼
+            currentIndex (int) : 부분 총계 기술의 중간값을 적용할 Index
 
-        Returns
-        -------
-            - True
-                기술 적용 성공 시 True 리턴
+        Returns:
+            bool : 기술 적용 성공 시 True 리턴
         """
         medianValue = int(self.datas[column].median())
         self.datas.at[currentIndex, column] = medianValue
