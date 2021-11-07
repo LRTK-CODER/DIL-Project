@@ -11,12 +11,9 @@ class OPECipher(DataSetting):
     | 암호화 기술 중 기타 암호화(순서보존)를 구현한 클래스
     | 모든 메소드는 생성자에 원본 데이터를 인자 값으로 넣으면 원본 데이터를 수정한다.
 
-    Parameters
-    ----------
-        - datas : pandas.DataFrame
-            순서보존 암호화 기술을 적용할 DataFrame 지정
-        - key : str
-            순서보존 암호화에 사용될 암호키 지정
+    Args:
+        datas (pandas.DataFrame) : 순서보존 암호화 기술을 적용할 DataFrame 지정
+        key (str) : 순서보존 암호화에 사용될 암호키 지정
     """
 
     def __init__(self, datas: DataFrame, key: str):
@@ -31,15 +28,11 @@ class OPECipher(DataSetting):
         """
         순서보존 암호화를 수행하는 메소드
 
-        Parameters
-        ----------
-            - column : str
-                순서보존 암호화를 적용할 컬럼
+        Args:
+            column (str) : 순서보존 암호화를 적용할 컬럼
 
-        Returns
-        -------
-            - True
-                기술 적용 성공 시 True 리턴
+        Returns:
+            bool : 기술 적용 성공 시 True 리턴
         """
         datas = self._toList(column)
 
@@ -52,15 +45,11 @@ class OPECipher(DataSetting):
         """
         순서보존 복호화를 수행하는 메소드
 
-        Parameters
-        ----------
-            - column : str
-                순서보존 복호화를 적용할 컬럼
+        Args:
+            column (str) : 순서보존 복호화를 적용할 컬럼
 
-        Returns
-        -------
-            - True
-                기술 적용 성공 시 True 리턴
+        Returns:
+            bool : 기술 적용 성공 시 True 리턴
         """
         datas = self._toList(column)
 
