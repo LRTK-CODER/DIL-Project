@@ -1,0 +1,591 @@
+
+<!DOCTYPE html>
+
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>통계 기술 &#8212; DIL 0.0.3 문서</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/blank.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/translations.js"></script>
+    <link rel="index" title="색인" href="../genindex.html" />
+    <link rel="search" title="검색" href="../search.html" />
+    <link rel="next" title="일반화 기술" href="generalization.html" />
+    <link rel="prev" title="삭제 기술" href="suppression.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="ko">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+<a class="navbar-brand" href="../index.html">
+<p class="title">DIL</p>
+</a>
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="index.html">
+  API Reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../tutorial/index.html">
+  Tutorial
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="suppression.html">
+   삭제 기술
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   통계 기술
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="generalization.html">
+   일반화 기술
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="crypto.html">
+   암호화 기술
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="randomization.html">
+   무작위화 기술
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="etc.html">
+   기타 기술
+  </a>
+ </li>
+</ul>
+
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   총계 처리 기술
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     총계 처리 클래스
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     평균 처리 메소드
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     최댓값 처리 메소드
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     최솟값 처리 메소드
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     최빈값 처리 메소드
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id8">
+     중간값 처리 메소드
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id9">
+   부분 총계 처리 기술
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id10">
+     부분 총계 처리 클래스
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id11">
+     평균 처리 메소드
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id12">
+     최댓값 처리 메소드
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id13">
+     최솟값 처리 메소드
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id14">
+     최빈값 처리 메소드
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id15">
+     중간값 처리 메소드
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <section id="id1">
+<h1>통계 기술<a class="headerlink" href="#id1" title="이 표제에 대한 퍼머링크">¶</a></h1>
+<section id="id2">
+<h2>총계 처리 기술<a class="headerlink" href="#id2" title="이 표제에 대한 퍼머링크">¶</a></h2>
+<section id="id3">
+<h3>총계 처리 클래스<a class="headerlink" href="#id3" title="이 표제에 대한 퍼머링크">¶</a></h3>
+<blockquote>
+<div><dl class="py function">
+<dt class="sig sig-object py" id="DIL.statistics.Aggregation">
+<span class="sig-prename descclassname"><span class="pre">DIL.statistics.</span></span><span class="sig-name descname"><span class="pre">Aggregation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">datas</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#DIL.statistics.Aggregation" title="이 정의에 대한 퍼머링크">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">통계 기술 중 총계 기술(평균값, 최댓값, 최솟값, 최빈값, 중간값)을 구현한 클래스</div>
+<div class="line">모든 메소드는 생성자에 원본 데이터를 인자 값으로 넣으면 원본 데이터를 수정한다.</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">매개변수</dt>
+<dd class="field-odd"><p><strong>datas</strong> (<em>pandas.DataFrame</em>) – 총계 기술을 적용할 DataFrame 지정</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+</section>
+<section id="id4">
+<h3>평균 처리 메소드<a class="headerlink" href="#id4" title="이 표제에 대한 퍼머링크">¶</a></h3>
+<blockquote>
+<div><dl class="py function">
+<dt class="sig sig-object py" id="DIL.statistics.Aggregation.mean">
+<span class="sig-prename descclassname"><span class="pre">DIL.statistics.Aggregation.</span></span><span class="sig-name descname"><span class="pre">mean</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#DIL.statistics.Aggregation.mean" title="이 정의에 대한 퍼머링크">¶</a></dt>
+<dd><p>총계 기술의 평균값을 구현한 메소드</p>
+<dl class="field-list simple">
+<dt class="field-odd">매개변수</dt>
+<dd class="field-odd"><p><strong>column</strong> (<em>str</em>) – 총계 기술의 평균값을 적용할 컬럼</p>
+</dd>
+<dt class="field-even">반환값</dt>
+<dd class="field-even"><p>기술 적용 성공 시 True 리턴</p>
+</dd>
+<dt class="field-odd">반환 형식</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+</section>
+<section id="id5">
+<h3>최댓값 처리 메소드<a class="headerlink" href="#id5" title="이 표제에 대한 퍼머링크">¶</a></h3>
+<blockquote>
+<div><dl class="py function">
+<dt class="sig sig-object py" id="DIL.statistics.Aggregation.max">
+<span class="sig-prename descclassname"><span class="pre">DIL.statistics.Aggregation.</span></span><span class="sig-name descname"><span class="pre">max</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#DIL.statistics.Aggregation.max" title="이 정의에 대한 퍼머링크">¶</a></dt>
+<dd><p>총계 기술의 최댓값을 구현한 메소드</p>
+<dl class="field-list simple">
+<dt class="field-odd">매개변수</dt>
+<dd class="field-odd"><p><strong>column</strong> (<em>str</em>) – 총계 기술의 최댓값을 적용할 컬럼</p>
+</dd>
+<dt class="field-even">반환값</dt>
+<dd class="field-even"><p>기술 적용 성공 시 True 리턴</p>
+</dd>
+<dt class="field-odd">반환 형식</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+</section>
+<section id="id6">
+<h3>최솟값 처리 메소드<a class="headerlink" href="#id6" title="이 표제에 대한 퍼머링크">¶</a></h3>
+<blockquote>
+<div><dl class="py function">
+<dt class="sig sig-object py" id="DIL.statistics.Aggregation.min">
+<span class="sig-prename descclassname"><span class="pre">DIL.statistics.Aggregation.</span></span><span class="sig-name descname"><span class="pre">min</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#DIL.statistics.Aggregation.min" title="이 정의에 대한 퍼머링크">¶</a></dt>
+<dd><p>총계 기술의 최솟값을 구현한 메소드</p>
+<dl class="field-list simple">
+<dt class="field-odd">매개변수</dt>
+<dd class="field-odd"><p><strong>column</strong> (<em>str</em>) – 총계 기술의 최솟값을 적용할 컬럼</p>
+</dd>
+<dt class="field-even">반환값</dt>
+<dd class="field-even"><p>기술 적용 성공 시 True 리턴</p>
+</dd>
+<dt class="field-odd">반환 형식</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+</section>
+<section id="id7">
+<h3>최빈값 처리 메소드<a class="headerlink" href="#id7" title="이 표제에 대한 퍼머링크">¶</a></h3>
+<blockquote>
+<div><dl class="py function">
+<dt class="sig sig-object py" id="DIL.statistics.Aggregation.mode">
+<span class="sig-prename descclassname"><span class="pre">DIL.statistics.Aggregation.</span></span><span class="sig-name descname"><span class="pre">mode</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#DIL.statistics.Aggregation.mode" title="이 정의에 대한 퍼머링크">¶</a></dt>
+<dd><p>총계 기술의 최빈값을 구현한 메소드</p>
+<dl class="field-list simple">
+<dt class="field-odd">매개변수</dt>
+<dd class="field-odd"><p><strong>column</strong> (<em>str</em>) – 총계 기술의 최빈값을 적용할 컬럼</p>
+</dd>
+<dt class="field-even">반환값</dt>
+<dd class="field-even"><p>기술 적용 성공 시 True 리턴</p>
+</dd>
+<dt class="field-odd">반환 형식</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+</section>
+<section id="id8">
+<h3>중간값 처리 메소드<a class="headerlink" href="#id8" title="이 표제에 대한 퍼머링크">¶</a></h3>
+<blockquote>
+<div><dl class="py function">
+<dt class="sig sig-object py" id="DIL.statistics.Aggregation.median">
+<span class="sig-prename descclassname"><span class="pre">DIL.statistics.Aggregation.</span></span><span class="sig-name descname"><span class="pre">median</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#DIL.statistics.Aggregation.median" title="이 정의에 대한 퍼머링크">¶</a></dt>
+<dd><p>총계 기술의 중간값을 구현한 메소드</p>
+<dl class="field-list simple">
+<dt class="field-odd">매개변수</dt>
+<dd class="field-odd"><p><strong>column</strong> (<em>str</em>) – 총계 기술의 중간값을 적용할 컬럼</p>
+</dd>
+<dt class="field-even">반환값</dt>
+<dd class="field-even"><p>기술 적용 성공 시 True 리턴</p>
+</dd>
+<dt class="field-odd">반환 형식</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+</section>
+</section>
+<section id="id9">
+<h2>부분 총계 처리 기술<a class="headerlink" href="#id9" title="이 표제에 대한 퍼머링크">¶</a></h2>
+<section id="id10">
+<h3>부분 총계 처리 클래스<a class="headerlink" href="#id10" title="이 표제에 대한 퍼머링크">¶</a></h3>
+<blockquote>
+<div><dl class="py function">
+<dt class="sig sig-object py" id="DIL.statistics.MicroAggregation">
+<span class="sig-prename descclassname"><span class="pre">DIL.statistics.</span></span><span class="sig-name descname"><span class="pre">MicroAggregation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">datas</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#DIL.statistics.MicroAggregation" title="이 정의에 대한 퍼머링크">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">통계 기술 중 부분 총계 기술(평균값, 최댓값, 최솟값, 최빈값, 중간값)을 구현한 클래스</div>
+<div class="line">모든 메소드는 생성자에 원본 데이터를 인자 값으로 넣으면 원본 데이터를 수정한다.</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">매개변수</dt>
+<dd class="field-odd"><p><strong>datas</strong> (<em>pandas.DataFrame</em>) – 부분 총계 기술을 적용할 DataFrame 지정</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+</section>
+<section id="id11">
+<h3>평균 처리 메소드<a class="headerlink" href="#id11" title="이 표제에 대한 퍼머링크">¶</a></h3>
+<blockquote>
+<div><dl class="py function">
+<dt class="sig sig-object py" id="DIL.statistics.MicroAggregation.mean">
+<span class="sig-prename descclassname"><span class="pre">DIL.statistics.MicroAggregation.</span></span><span class="sig-name descname"><span class="pre">mean</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#DIL.statistics.MicroAggregation.mean" title="이 정의에 대한 퍼머링크">¶</a></dt>
+<dd><p>부분 총계 기술의 평균값을 구현한 메소드</p>
+<dl class="field-list simple">
+<dt class="field-odd">매개변수</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>column</strong> (<em>str</em>) – 부분 총계 기술의 평균값을 적용할 컬럼</p></li>
+<li><p><strong>currentIndex</strong> (<em>int</em>) – 부분 총계 기술의 평균값을 적용할 Index</p></li>
+</ul>
+</dd>
+<dt class="field-even">반환값</dt>
+<dd class="field-even"><p>기술 적용 성공 시 True 리턴</p>
+</dd>
+<dt class="field-odd">반환 형식</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+</section>
+<section id="id12">
+<h3>최댓값 처리 메소드<a class="headerlink" href="#id12" title="이 표제에 대한 퍼머링크">¶</a></h3>
+<blockquote>
+<div><dl class="py function">
+<dt class="sig sig-object py" id="DIL.statistics.MicroAggregation.max">
+<span class="sig-prename descclassname"><span class="pre">DIL.statistics.MicroAggregation.</span></span><span class="sig-name descname"><span class="pre">max</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#DIL.statistics.MicroAggregation.max" title="이 정의에 대한 퍼머링크">¶</a></dt>
+<dd><p>부분 총계 기술의 최댓값을 구현한 메소드</p>
+<dl class="field-list simple">
+<dt class="field-odd">매개변수</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>column</strong> (<em>str</em>) – 부분 총계 기술의 최댓값을 적용할 컬럼</p></li>
+<li><p><strong>currentIndex</strong> (<em>int</em>) – 부분 총계 기술의 최댓값을 적용할 Index</p></li>
+</ul>
+</dd>
+<dt class="field-even">반환값</dt>
+<dd class="field-even"><p>기술 적용 성공 시 True 리턴</p>
+</dd>
+<dt class="field-odd">반환 형식</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+</section>
+<section id="id13">
+<h3>최솟값 처리 메소드<a class="headerlink" href="#id13" title="이 표제에 대한 퍼머링크">¶</a></h3>
+<blockquote>
+<div><dl class="py function">
+<dt class="sig sig-object py" id="DIL.statistics.MicroAggregation.min">
+<span class="sig-prename descclassname"><span class="pre">DIL.statistics.MicroAggregation.</span></span><span class="sig-name descname"><span class="pre">min</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#DIL.statistics.MicroAggregation.min" title="이 정의에 대한 퍼머링크">¶</a></dt>
+<dd><p>부분 총계 기술의 최솟값을 구현한 메소드</p>
+<dl class="field-list simple">
+<dt class="field-odd">매개변수</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>column</strong> (<em>str</em>) – 부분 총계 기술의 최솟값을 적용할 컬럼</p></li>
+<li><p><strong>currentIndex</strong> (<em>int</em>) – 부분 총계 기술의 최솟값을 적용할 Index</p></li>
+</ul>
+</dd>
+<dt class="field-even">반환값</dt>
+<dd class="field-even"><p>기술 적용 성공 시 True 리턴</p>
+</dd>
+<dt class="field-odd">반환 형식</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+</section>
+<section id="id14">
+<h3>최빈값 처리 메소드<a class="headerlink" href="#id14" title="이 표제에 대한 퍼머링크">¶</a></h3>
+<blockquote>
+<div><dl class="py function">
+<dt class="sig sig-object py" id="DIL.statistics.MicroAggregation.mode">
+<span class="sig-prename descclassname"><span class="pre">DIL.statistics.MicroAggregation.</span></span><span class="sig-name descname"><span class="pre">mode</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#DIL.statistics.MicroAggregation.mode" title="이 정의에 대한 퍼머링크">¶</a></dt>
+<dd><p>부분 총계 기술의 최빈값을 구현한 메소드</p>
+<dl class="field-list simple">
+<dt class="field-odd">매개변수</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>column</strong> (<em>str</em>) – 부분 총계 기술의 최빈값을 적용할 컬럼</p></li>
+<li><p><strong>currentIndex</strong> (<em>int</em>) – 부분 총계 기술의 최빈값을 적용할 Index</p></li>
+</ul>
+</dd>
+<dt class="field-even">반환값</dt>
+<dd class="field-even"><p>기술 적용 성공 시 True 리턴</p>
+</dd>
+<dt class="field-odd">반환 형식</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+</section>
+<section id="id15">
+<h3>중간값 처리 메소드<a class="headerlink" href="#id15" title="이 표제에 대한 퍼머링크">¶</a></h3>
+<blockquote>
+<div><dl class="py function">
+<dt class="sig sig-object py" id="DIL.statistics.MicroAggregation.median">
+<span class="sig-prename descclassname"><span class="pre">DIL.statistics.MicroAggregation.</span></span><span class="sig-name descname"><span class="pre">median</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#DIL.statistics.MicroAggregation.median" title="이 정의에 대한 퍼머링크">¶</a></dt>
+<dd><p>부분 총계 기술의 중간값을 구현한 메소드</p>
+<dl class="field-list simple">
+<dt class="field-odd">매개변수</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>column</strong> (<em>str</em>) – 부분 총계 기술의 중간값을 적용할 컬럼</p></li>
+<li><p><strong>currentIndex</strong> (<em>int</em>) – 부분 총계 기술의 중간값을 적용할 Index</p></li>
+</ul>
+</dd>
+<dt class="field-even">반환값</dt>
+<dd class="field-even"><p>기술 적용 성공 시 True 리턴</p>
+</dd>
+<dt class="field-odd">반환 형식</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+</section>
+</section>
+</section>
+
+
+              </div>
+              
+              
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="suppression.html" title="이전 페이지">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">이전</p>
+            <p class="prev-next-title">삭제 기술</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="generalization.html" title="다음 페이지">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">다음</p>
+        <p class="prev-next-title">일반화 기술</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+<footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2021, DIL-Project.<br>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

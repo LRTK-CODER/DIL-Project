@@ -1,0 +1,441 @@
+
+<!DOCTYPE html>
+
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>삭제 기술 &#8212; DIL 0.0.3 문서</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/blank.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/translations.js"></script>
+    <link rel="index" title="색인" href="../genindex.html" />
+    <link rel="search" title="검색" href="../search.html" />
+    <link rel="next" title="통계 기술" href="statistics.html" />
+    <link rel="prev" title="API Reference" href="index.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="ko">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+<a class="navbar-brand" href="../index.html">
+<p class="title">DIL</p>
+</a>
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="index.html">
+  API Reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../tutorial/index.html">
+  Tutorial
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   삭제 기술
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="statistics.html">
+   통계 기술
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="generalization.html">
+   일반화 기술
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="crypto.html">
+   암호화 기술
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="randomization.html">
+   무작위화 기술
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="etc.html">
+   기타 기술
+  </a>
+ </li>
+</ul>
+
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   삭제 기술 클래스
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   일반 삭제 메소드
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   부분 삭제 메소드
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   행 항목 삭제 메소드
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   로컬 삭제 메소드
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id7">
+   마스킹 메소드
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id8">
+   주소 부분 삭제 메소드
+  </a>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <section id="id1">
+<h1>삭제 기술<a class="headerlink" href="#id1" title="이 표제에 대한 퍼머링크">¶</a></h1>
+<section id="id2">
+<h2>삭제 기술 클래스<a class="headerlink" href="#id2" title="이 표제에 대한 퍼머링크">¶</a></h2>
+<blockquote>
+<div><dl class="py class">
+<dt class="sig sig-object py" id="DIL.Suppression">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">DIL.</span></span><span class="sig-name descname"><span class="pre">Suppression</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">datas</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#DIL.Suppression" title="이 정의에 대한 퍼머링크">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">삭제 기술(일반 삭제, 부분 삭제, 행 항목 삭제, 마스킹)을 구현한 클래스</div>
+<div class="line">모든 메소드는 생성자에 원본 데이터를 인자 값으로 넣으면 원본 데이터를 수정한다.</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">매개변수</dt>
+<dd class="field-odd"><p><strong>datas</strong> (<em>pandas.DataFrame</em>) – 삭제 기술을 적용할 DataFrame 지정</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+</section>
+<section id="id3">
+<h2>일반 삭제 메소드<a class="headerlink" href="#id3" title="이 표제에 대한 퍼머링크">¶</a></h2>
+<blockquote>
+<div><dl class="py function">
+<dt class="sig sig-object py" id="DIL.Suppression.general">
+<span class="sig-prename descclassname"><span class="pre">DIL.Suppression.</span></span><span class="sig-name descname"><span class="pre">general</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#DIL.Suppression.general" title="이 정의에 대한 퍼머링크">¶</a></dt>
+<dd><p>삭제 기술 중 일반 삭제를 수행하는 함수</p>
+<dl class="field-list simple">
+<dt class="field-odd">매개변수</dt>
+<dd class="field-odd"><p><strong>columns</strong> (<em>list</em>) – 일반 삭제를 적용할 컬럼들</p>
+</dd>
+<dt class="field-even">반환값</dt>
+<dd class="field-even"><p>기술 적용 성공 시 True 리턴</p>
+</dd>
+<dt class="field-odd">반환 형식</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+</section>
+<section id="id4">
+<h2>부분 삭제 메소드<a class="headerlink" href="#id4" title="이 표제에 대한 퍼머링크">¶</a></h2>
+<blockquote>
+<div><dl class="py function">
+<dt class="sig sig-object py" id="DIL.Suppression.partial">
+<span class="sig-prename descclassname"><span class="pre">DIL.Suppression.</span></span><span class="sig-name descname"><span class="pre">partial</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#DIL.Suppression.partial" title="이 정의에 대한 퍼머링크">¶</a></dt>
+<dd><p>삭제 기술 중 부분 삭제를 수행하는 함수</p>
+<dl class="field-list simple">
+<dt class="field-odd">매개변수</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>column</strong> (<em>str</em>) – 부분 삭제를 적용할 컬럼</p></li>
+<li><p><strong>scope</strong> (<em>list</em>) – 데이터의 부분 삭제 적용 범위 지정</p></li>
+</ul>
+</dd>
+<dt class="field-even">반환값</dt>
+<dd class="field-even"><p>기술 적용 성공 시 True 리턴</p>
+</dd>
+<dt class="field-odd">반환 형식</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+</section>
+<section id="id5">
+<h2>행 항목 삭제 메소드<a class="headerlink" href="#id5" title="이 표제에 대한 퍼머링크">¶</a></h2>
+<blockquote>
+<div><dl class="py function">
+<dt class="sig sig-object py" id="DIL.Suppression.record">
+<span class="sig-prename descclassname"><span class="pre">DIL.Suppression.</span></span><span class="sig-name descname"><span class="pre">record</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#DIL.Suppression.record" title="이 정의에 대한 퍼머링크">¶</a></dt>
+<dd><p>삭제 기술 중 행 항목 삭제를 수행하는 함수</p>
+<dl class="field-list simple">
+<dt class="field-odd">매개변수</dt>
+<dd class="field-odd"><p><strong>currentIndexList</strong> (<em>list</em>) – 삭제 할 Index list</p>
+</dd>
+<dt class="field-even">반환값</dt>
+<dd class="field-even"><p>기술 적용 성공 시 True 리턴</p>
+</dd>
+<dt class="field-odd">반환 형식</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+</section>
+<section id="id6">
+<h2>로컬 삭제 메소드<a class="headerlink" href="#id6" title="이 표제에 대한 퍼머링크">¶</a></h2>
+<blockquote>
+<div><dl class="py function">
+<dt class="sig sig-object py" id="DIL.Suppression.local">
+<span class="sig-prename descclassname"><span class="pre">DIL.Suppression.</span></span><span class="sig-name descname"><span class="pre">local</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#DIL.Suppression.local" title="이 정의에 대한 퍼머링크">¶</a></dt>
+<dd><p>삭제 기술 중 로컬 삭제를 수행하는 함수</p>
+<dl class="field-list simple">
+<dt class="field-odd">매개변수</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>column</strong> (<em>str</em>) – 로컬 삭제 기술을 적용할 컬럼</p></li>
+<li><p><strong>currentIndexList</strong> (<em>list</em>) – 로컬 삭제 기술을 적용할 Index list</p></li>
+</ul>
+</dd>
+<dt class="field-even">반환값</dt>
+<dd class="field-even"><p>기술 적용 성공 시 True 리턴</p>
+</dd>
+<dt class="field-odd">반환 형식</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+</section>
+<section id="id7">
+<h2>마스킹 메소드<a class="headerlink" href="#id7" title="이 표제에 대한 퍼머링크">¶</a></h2>
+<blockquote>
+<div><dl class="py function">
+<dt class="sig sig-object py" id="DIL.Suppression.masking">
+<span class="sig-prename descclassname"><span class="pre">DIL.Suppression.</span></span><span class="sig-name descname"><span class="pre">masking</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#DIL.Suppression.masking" title="이 정의에 대한 퍼머링크">¶</a></dt>
+<dd><p>삭제 기술 중 마스킹을 수행하는 함수</p>
+<dl class="field-list simple">
+<dt class="field-odd">매개변수</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>column</strong> (<em>str</em>) – 마스킹 기술을 적용할 컬럼</p></li>
+<li><p><strong>scope</strong> (<em>list</em>) – 데이터에 마스킹 기술을 적용할 범위 지정</p></li>
+</ul>
+</dd>
+<dt class="field-even">반환값</dt>
+<dd class="field-even"><p>기술 적용 성공 시 True 리턴</p>
+</dd>
+<dt class="field-odd">반환 형식</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+</section>
+<section id="id8">
+<h2>주소 부분 삭제 메소드<a class="headerlink" href="#id8" title="이 표제에 대한 퍼머링크">¶</a></h2>
+<blockquote>
+<div><dl class="py function">
+<dt class="sig sig-object py" id="DIL.Suppression.address">
+<span class="sig-prename descclassname"><span class="pre">DIL.Suppression.</span></span><span class="sig-name descname"><span class="pre">address</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#DIL.Suppression.address" title="이 정의에 대한 퍼머링크">¶</a></dt>
+<dd><p>주소 부분 삭제를 수행하는 함수</p>
+<dl class="field-list simple">
+<dt class="field-odd">매개변수</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>column</strong> (<em>str</em>) – 주소 부분 삭제를 적용할 컬럼</p></li>
+<li><p><strong>mode</strong> (<em>int</em>) – <div class="line-block">
+<div class="line">값이 1일 때, 도 단위까지 부분 삭제</div>
+<div class="line">값이 2일 때, 시 단위까지 부분 삭제</div>
+<div class="line">Default = 2</div>
+</div>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">반환값</dt>
+<dd class="field-even"><p>기술 적용 성공 시 True 리턴</p>
+</dd>
+<dt class="field-odd">반환 형식</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+</section>
+</section>
+
+
+              </div>
+              
+              
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="index.html" title="이전 페이지">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">이전</p>
+            <p class="prev-next-title">API Reference</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="statistics.html" title="다음 페이지">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">다음</p>
+        <p class="prev-next-title">통계 기술</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+<footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2021, DIL-Project.<br>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

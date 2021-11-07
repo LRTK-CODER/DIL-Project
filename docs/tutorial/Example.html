@@ -1,0 +1,324 @@
+
+<!DOCTYPE html>
+
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Example &#8212; DIL 0.0.3 문서</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/blank.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/translations.js"></script>
+    <link rel="index" title="색인" href="../genindex.html" />
+    <link rel="search" title="검색" href="../search.html" />
+    <link rel="prev" title="Install DIL" href="Install_DIL.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="ko">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+<a class="navbar-brand" href="../index.html">
+<p class="title">DIL</p>
+</a>
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../api/index.html">
+  API Reference
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="index.html">
+  Tutorial
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Install_DIL.html">
+   Install DIL
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Example
+  </a>
+ </li>
+</ul>
+
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   데이터 분석 목적
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#l">
+     L사의 고객 데이터
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#read-csv-py">
+       read_csv.py 코드
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id2">
+       read_csv.py 실행
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   가명처리해야하는 데이터 정리
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     데이터 분석 시 필요한 데이터 선정
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     식별자, 준식별자, 민감정보 선정
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   가명처리 기술 표
+  </a>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <section id="example">
+<h1>Example<a class="headerlink" href="#example" title="이 표제에 대한 퍼머링크">¶</a></h1>
+<section id="id1">
+<h2>데이터 분석 목적<a class="headerlink" href="#id1" title="이 표제에 대한 퍼머링크">¶</a></h2>
+<div class="line-block">
+<div class="line">최고급 객실 숙박 L사는 자신들의 고객들의 지역, 가족 관계, 재산을 분석하여 맞춤형 서비스를 만들고자 한다.</div>
+<div class="line">이 때문에 데이터 분석 전문 회사인 A사에 고객들의 데이터를 넘겨서 데이터 분석을 의탁하려 한다.</div>
+</div>
+<div class="line-block">
+<div class="line">하지만 고객 정보를 그대로 데이터 분석 전문 회사 A사에 전달하면 법에 위촉이 됨으로, 최고급 객실 숙박 L사는 고객을 식별할 수 없도록 가명처리 후 전달해야한다.</div>
+<div class="line">이를 위해 DIL 라이브러리를 이용하여 가명처리를 하겠다.</div>
+</div>
+<section id="l">
+<h3>L사의 고객 데이터<a class="headerlink" href="#l" title="이 표제에 대한 퍼머링크">¶</a></h3>
+<p>해당 데이터셋은 DIL의 Sample 디렉토리에 ‘’example_dataset.csv’’로 저장되어 있습니다.</p>
+<section id="read-csv-py">
+<h4>read_csv.py 코드<a class="headerlink" href="#read-csv-py" title="이 표제에 대한 퍼머링크">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span>
+
+<span class="n">datas</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../../Sample/example_dataset.csv&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">datas</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id2">
+<h4>read_csv.py 실행<a class="headerlink" href="#id2" title="이 표제에 대한 퍼머링크">¶</a></h4>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ python tutorial/code/read_csv.py
+    이름    생년월일 성별  ...     직업              가족            재산
+0  정재훈  970624  남  ...    개발자               -      10000000
+1  박시온  931020  남  ...  보안담당자             배우자      60000000
+2  박지운  640618  남  ...   국회위원       배우자, 아들 1     200000000
+3  이재용  680623  남  ...    기업인  배우자, 아들 1, 딸 1  400000000000
+
+[4 rows x 8 columns]
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="id3">
+<h2>가명처리해야하는 데이터 정리<a class="headerlink" href="#id3" title="이 표제에 대한 퍼머링크">¶</a></h2>
+<section id="id4">
+<h3>데이터 분석 시 필요한 데이터 선정<a class="headerlink" href="#id4" title="이 표제에 대한 퍼머링크">¶</a></h3>
+<p>주소, 가족, 재산</p>
+</section>
+<section id="id5">
+<h3>식별자, 준식별자, 민감정보 선정<a class="headerlink" href="#id5" title="이 표제에 대한 퍼머링크">¶</a></h3>
+<ul class="simple">
+<li><p>식별자 : 이름, 핸드폰</p></li>
+<li><p>준식별자 : 생년월일, 성별, 주소</p></li>
+<li><p>민감정보 : 직업, 가족, 재산</p></li>
+</ul>
+</section>
+</section>
+<section id="id6">
+<h2>가명처리 기술 표<a class="headerlink" href="#id6" title="이 표제에 대한 퍼머링크">¶</a></h2>
+<table class="table">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>이름</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>삭제</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+              </div>
+              
+              
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="Install_DIL.html" title="이전 페이지">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">이전</p>
+            <p class="prev-next-title">Install DIL</p>
+        </div>
+    </a>
+</div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+<footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2021, DIL-Project.<br>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

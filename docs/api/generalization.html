@@ -1,0 +1,479 @@
+
+<!DOCTYPE html>
+
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>일반화 기술 &#8212; DIL 0.0.3 문서</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/blank.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/translations.js"></script>
+    <link rel="index" title="색인" href="../genindex.html" />
+    <link rel="search" title="검색" href="../search.html" />
+    <link rel="next" title="암호화 기술" href="crypto.html" />
+    <link rel="prev" title="통계 기술" href="statistics.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="ko">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+<a class="navbar-brand" href="../index.html">
+<p class="title">DIL</p>
+</a>
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="index.html">
+  API Reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../tutorial/index.html">
+  Tutorial
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="suppression.html">
+   삭제 기술
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="statistics.html">
+   통계 기술
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   일반화 기술
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="crypto.html">
+   암호화 기술
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="randomization.html">
+   무작위화 기술
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="etc.html">
+   기타 기술
+  </a>
+ </li>
+</ul>
+
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   로컬 일반화 기술 &amp; 문자데이터 범주화 기술
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     일반화 기술 클래스
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     로컬 일반화 메소드
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     문자데이터 범주화 메소드
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   라운딩 기술
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     라운딩 클래스
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id8">
+     반올림 메소드
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id9">
+     올림 메소드
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id10">
+     내림 메소드
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id11">
+     랜덤 라운딩 메소드
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <section id="id1">
+<h1>일반화 기술<a class="headerlink" href="#id1" title="이 표제에 대한 퍼머링크">¶</a></h1>
+<section id="id2">
+<h2>로컬 일반화 기술 &amp; 문자데이터 범주화 기술<a class="headerlink" href="#id2" title="이 표제에 대한 퍼머링크">¶</a></h2>
+<section id="id3">
+<h3>일반화 기술 클래스<a class="headerlink" href="#id3" title="이 표제에 대한 퍼머링크">¶</a></h3>
+<blockquote>
+<div><dl class="py function">
+<dt class="sig sig-object py" id="DIL.Generalization">
+<span class="sig-prename descclassname"><span class="pre">DIL.</span></span><span class="sig-name descname"><span class="pre">Generalization</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">datas</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#DIL.Generalization" title="이 정의에 대한 퍼머링크">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">일반화 기술 중 로컬 일반화, 문자데이터 범주화를 구현한 클래스</div>
+<div class="line">모든 메소드는 생성자에 원본 데이터를 인자 값으로 넣으면 원본 데이터를 수정한다.</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">매개변수</dt>
+<dd class="field-odd"><p><strong>datas</strong> (<em>pandas.DataFrame</em>) – 로컬 일반화 기술과 문자데이터 범주화 기술을 적용할 DataFrame 지정</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+</section>
+<section id="id4">
+<h3>로컬 일반화 메소드<a class="headerlink" href="#id4" title="이 표제에 대한 퍼머링크">¶</a></h3>
+<blockquote>
+<div><dl class="py function">
+<dt class="sig sig-object py" id="DIL.Generalization.local">
+<span class="sig-prename descclassname"><span class="pre">DIL.Generalization.</span></span><span class="sig-name descname"><span class="pre">local</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#DIL.Generalization.local" title="이 정의에 대한 퍼머링크">¶</a></dt>
+<dd><p>일반화 기술 중 로컬 일반화를 수행하는 함수</p>
+<dl class="field-list simple">
+<dt class="field-odd">매개변수</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>column</strong> (<em>str</em>) – 로컬 일반화를 적용할 컬럼</p></li>
+<li><p><strong>currentIndexList</strong> (<em>list</em>) – 로컬 일반화를 적용할 Index 범위</p></li>
+</ul>
+</dd>
+<dt class="field-even">반환값</dt>
+<dd class="field-even"><p>기술 적용 성공 시 True 리턴</p>
+</dd>
+<dt class="field-odd">반환 형식</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+</section>
+<section id="id5">
+<h3>문자데이터 범주화 메소드<a class="headerlink" href="#id5" title="이 표제에 대한 퍼머링크">¶</a></h3>
+<blockquote>
+<div><dl class="py function">
+<dt class="sig sig-object py" id="DIL.Generalization.categorizion">
+<span class="sig-prename descclassname"><span class="pre">DIL.Generalization.</span></span><span class="sig-name descname"><span class="pre">categorizion</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#DIL.Generalization.categorizion" title="이 정의에 대한 퍼머링크">¶</a></dt>
+<dd><p>일반화 기술 중 문자데이터 범주화를 수행하는 함수</p>
+<dl class="field-list simple">
+<dt class="field-odd">매개변수</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>column</strong> (<em>str</em>) – 문자데이터 범주화를 적용할 컬럼</p></li>
+<li><p><strong>replaceList</strong> (<em>list</em>) – 범주화로 치환될 문자 데이터 목록</p></li>
+<li><p><strong>category</strong> (<em>str</em>) – 범주화로 치환할 문자 데이터</p></li>
+</ul>
+</dd>
+<dt class="field-even">반환값</dt>
+<dd class="field-even"><p>기술 적용 성공 시 True 리턴</p>
+</dd>
+<dt class="field-odd">반환 형식</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+</section>
+</section>
+<section id="id6">
+<h2>라운딩 기술<a class="headerlink" href="#id6" title="이 표제에 대한 퍼머링크">¶</a></h2>
+<section id="id7">
+<h3>라운딩 클래스<a class="headerlink" href="#id7" title="이 표제에 대한 퍼머링크">¶</a></h3>
+<blockquote>
+<div><dl class="py function">
+<dt class="sig sig-object py" id="DIL.Rounding">
+<span class="sig-prename descclassname"><span class="pre">DIL.</span></span><span class="sig-name descname"><span class="pre">Rounding</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#DIL.Rounding" title="이 정의에 대한 퍼머링크">¶</a></dt>
+<dd><p>라운딩 기술(일반 라운딩, 랜덤 라운딩)을 구현한 클래스</p>
+</dd></dl>
+
+</div></blockquote>
+</section>
+<section id="id8">
+<h3>반올림 메소드<a class="headerlink" href="#id8" title="이 표제에 대한 퍼머링크">¶</a></h3>
+<blockquote>
+<div><dl class="py function">
+<dt class="sig sig-object py" id="DIL.Rounding.off">
+<span class="sig-prename descclassname"><span class="pre">DIL.Rounding.</span></span><span class="sig-name descname"><span class="pre">off</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#DIL.Rounding.off" title="이 정의에 대한 퍼머링크">¶</a></dt>
+<dd><p>라운딩 기술 중 반올림을 수행하는 메소드</p>
+<dl class="field-list simple">
+<dt class="field-odd">매개변수</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>int</em>) – 반올림을 수행할 숫자형 타입 데이터</p></li>
+<li><p><strong>seatNum</strong> (<em>int</em>) – 반올림을 수행할 숫자형 타입 데이터의 자리수 위치</p></li>
+</ul>
+</dd>
+<dt class="field-even">반환값</dt>
+<dd class="field-even"><p>반올림이 적용된 숫자형 타입 데이터를 리턴</p>
+</dd>
+<dt class="field-odd">반환 형식</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+</section>
+<section id="id9">
+<h3>올림 메소드<a class="headerlink" href="#id9" title="이 표제에 대한 퍼머링크">¶</a></h3>
+<blockquote>
+<div><dl class="py function">
+<dt class="sig sig-object py" id="DIL.Rounding.up">
+<span class="sig-prename descclassname"><span class="pre">DIL.Rounding.</span></span><span class="sig-name descname"><span class="pre">up</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#DIL.Rounding.up" title="이 정의에 대한 퍼머링크">¶</a></dt>
+<dd><p>라운딩 기술 중 올림을 수행하는 메소드</p>
+<dl class="field-list simple">
+<dt class="field-odd">매개변수</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>int</em>) – 올림을 수행할 숫자형 타입 데이터</p></li>
+<li><p><strong>seatNum</strong> (<em>int</em>) – 올림을 수행할 숫자형 타입 데이터의 자리수 위치</p></li>
+</ul>
+</dd>
+<dt class="field-even">반환값</dt>
+<dd class="field-even"><p>올림이 적용된 숫자형 타입 데이터를 리턴</p>
+</dd>
+<dt class="field-odd">반환 형식</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+</section>
+<section id="id10">
+<h3>내림 메소드<a class="headerlink" href="#id10" title="이 표제에 대한 퍼머링크">¶</a></h3>
+<blockquote>
+<div><dl class="py function">
+<dt class="sig sig-object py" id="DIL.Rounding.down">
+<span class="sig-prename descclassname"><span class="pre">DIL.Rounding.</span></span><span class="sig-name descname"><span class="pre">down</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#DIL.Rounding.down" title="이 정의에 대한 퍼머링크">¶</a></dt>
+<dd><p>라운딩 기술 중 내림을 수행하는 메소드</p>
+<dl class="field-list simple">
+<dt class="field-odd">매개변수</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>int</em>) – 내림을 수행할 숫자형 타입 데이터</p></li>
+<li><p><strong>seatNum</strong> (<em>int</em>) – 내림을 수행할 숫자형 타입 데이터의 자리수 위치</p></li>
+</ul>
+</dd>
+<dt class="field-even">반환값</dt>
+<dd class="field-even"><p>내림이 적용된 숫자형 타입 데이터를 리턴</p>
+</dd>
+<dt class="field-odd">반환 형식</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+</section>
+<section id="id11">
+<h3>랜덤 라운딩 메소드<a class="headerlink" href="#id11" title="이 표제에 대한 퍼머링크">¶</a></h3>
+<blockquote>
+<div><dl class="py function">
+<dt class="sig sig-object py" id="DIL.Rounding.random">
+<span class="sig-prename descclassname"><span class="pre">DIL.Rounding.</span></span><span class="sig-name descname"><span class="pre">random</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#DIL.Rounding.random" title="이 정의에 대한 퍼머링크">¶</a></dt>
+<dd><p>라운딩 기술 중 무작위로 수행하는 메소드</p>
+<dl class="field-list simple">
+<dt class="field-odd">매개변수</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>int</em>) – 무작위로 수행할 숫자형 타입 데이터</p></li>
+<li><p><strong>seatNum</strong> (<em>int</em>) – 무작위로 수행할 숫자형 타입 데이터의 자리수 위치</p></li>
+</ul>
+</dd>
+<dt class="field-even">반환값</dt>
+<dd class="field-even"><p>기술 적용 성공 시 True 리턴</p>
+</dd>
+<dt class="field-odd">반환 형식</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+</section>
+</section>
+</section>
+
+
+              </div>
+              
+              
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="statistics.html" title="이전 페이지">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">이전</p>
+            <p class="prev-next-title">통계 기술</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="crypto.html" title="다음 페이지">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">다음</p>
+        <p class="prev-next-title">암호화 기술</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+<footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2021, DIL-Project.<br>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>
