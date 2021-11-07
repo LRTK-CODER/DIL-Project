@@ -12,6 +12,10 @@ API Reference
 .. toctree::
    api/suppression
    api/generalization
+   api/etc
+   api/statistics
+   api/randomization
+   api/crypto
 
 ------------------
 Indices and tables
